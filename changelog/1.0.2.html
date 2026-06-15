@@ -17,7 +17,7 @@
   <!-- ── Téléchargement ───────────────────────────────── -->
   <section id="download">
   <div class="section-inner">
-    <h2 class="section-title reveal reveal-delay-1">Changelog Pyro<em>Track</em>System <br>Version <em>1.0.5</em>.</h2>
+    <h2 class="section-title reveal reveal-delay-1">Changelog Pyro<em>Track</em>System <br>Version <em id="page-version"></em>.</h2>
 
     <div class="patchnote-grid">
       <ul id="patchnote-container" class="pn-list">
@@ -37,6 +37,10 @@
 </body>
 
   <script src="../js/components.js"></script>
+  <script>
+  const match = location.pathname.match(/(\d+\.\d+\.\d+)/);
+  if (match) document.getElementById('page-version').textContent = match[1];
+</script>
   <script>
     /* ── Nav active ── */
     function setActive(el) {
