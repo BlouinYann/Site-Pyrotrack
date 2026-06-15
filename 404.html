@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 – Page introuvable | PyroTrack System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@400;500;600&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ── Page 404 spécifique ── */
+    .page-404 {
+      flex: 1 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 100px 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Grille bg identique au hero */
+    .page-404-bg {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,78,26,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,78,26,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+
+    .page-404-glow {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 700px; height: 500px;
+      background: radial-gradient(ellipse at center,
+        rgba(204,17,17,0.15) 0%,
+        rgba(255,78,26,0.06) 40%,
+        transparent 70%);
+      pointer-events: none;
+      animation: pulse-glow 4s ease-in-out infinite;
+    }
+
+    .err-eyebrow {
+      position: relative;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+      opacity: 0;
+      animation: fadeUp 0.5s 0.1s forwards;
+    }
+
+    .err-code {
+      position: relative;
+      font-family: var(--font-ui);
+      font-weight: 900;
+      font-size: clamp(7rem, 22vw, 14rem);
+      line-height: 1;
+      letter-spacing: -0.02em;
+      color: var(--light);
+      margin-bottom: 0;
+      opacity: 0;
+      animation: fadeUp 0.6s 0.2s forwards;
+    }
+
+    .err-code .accent { color: var(--red); }
+
+    .err-rule {
+      position: relative;
+      width: 80px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--red), transparent);
+      margin: 1.5rem auto;
+      opacity: 0;
+      animation: fadeUp 0.5s 0.35s forwards;
+    }
+
+    .err-title {
+      position: relative;
+      font-family: var(--font-ui);
+      font-weight: 700;
+      font-size: clamp(1.2rem, 4vw, 2rem);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--light);
+      margin-bottom: 1rem;
+      opacity: 0;
+      animation: fadeUp 0.5s 0.4s forwards;
+    }
+
+    .err-desc {
+      position: relative;
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      color: var(--text2);
+      line-height: 1.7;
+      max-width: 440px;
+      margin: 0 auto 2.5rem;
+      opacity: 0;
+      animation: fadeUp 0.5s 0.5s forwards;
+    }
+
+    .err-actions {
+      position: relative;
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.5s 0.6s forwards;
+    }
+
+    /* Bouton primaire — clone de .btn-primary du site */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--red);
+      color: #fff;
+      font-family: var(--font-ui);
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.8rem 2rem;
+      clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+      transition: background 0.2s, transform 0.15s;
+      cursor: pointer;
+      border: none;
+      text-decoration: none;
+    }
+    .btn-primary:hover { background: var(--red-hot); transform: translateY(-1px); }
+
+    /* Bouton secondaire */
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: transparent;
+      color: var(--text);
+      font-family: var(--font-ui);
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.8rem 2rem;
+      border: 1px solid var(--border2);
+      clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+      transition: border-color 0.2s, color 0.2s, transform 0.15s;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .btn-secondary:hover { border-color: var(--accent); color: var(--light); transform: translateY(-1px); }
+
+    .err-path {
+      position: relative;
+      margin-top: 2.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      color: var(--text3);
+      text-transform: uppercase;
+      opacity: 0;
+      animation: fadeUp 0.5s 0.75s forwards;
+    }
+
+    .err-path span {
+      color: var(--smoke);
+    }
+  </style>
+</head>
+<body>
+
+  <div id="header-placeholder"></div>
+
+  <main class="page-404">
+    <div class="page-404-bg"></div>
+    <div class="page-404-glow"></div>
+
+    <div class="err-eyebrow">// Erreur système</div>
+
+    <div class="err-code">4<span class="accent">0</span>4</div>
+
+    <div class="err-rule"></div>
+
+    <h1 class="err-title">Page introuvable</h1>
+
+    <p class="err-desc">
+      La page demandée n'existe pas ou a été déplacée.<br>
+      Vérifiez l'URL ou revenez à l'accueil.
+    </p>
+
+    <div class="err-actions">
+      <a class="btn-primary" href="/">↩ Accueil</a>
+    </div>
+
+    <p class="err-path">Chemin demandé&nbsp;: <span id="err-path-val">—</span></p>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="js/components.js"></script>
+  <script>
+    /* Affiche le chemin demandé */
+    const p = window.location.pathname;
+    if (p && p !== '/') {
+      document.getElementById('err-path-val').textContent = p;
+    }
+
+    /* Reveal au scroll (cohérence avec le reste du site) */
+    const reveals = document.querySelectorAll('.reveal');
+    const revealObs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => revealObs.observe(el));
+  </script>
+
+</body>
+</html>
