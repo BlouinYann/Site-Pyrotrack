@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PyroTrack System — Système de suivi de consommation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@400;500;600&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css">
+</head>
+
+<div id="header-placeholder"></div>
+
+<main>
+  <!-- ── Téléchargement ───────────────────────────────── -->
+  <section id="download">
+  <div class="section-inner">
+    <h2 class="section-title reveal reveal-delay-1">Changelog Pyro<em>Track</em>System <br>Version <em>1.0.5</em>.</h2>
+
+    <div class="patchnote-grid">
+      <ul id="patchnote-container" class="pn-list">
+        </ul>
+    </div>
+  </div>
+      <a href="../download.html" class="btn-primary" style="margin-top: 2rem;">
+        Retour
+      </a>
+      </div>
+    </div>
+  </section>
+
+  <hr class="red-rule">
+</main>
+  <div id="footer-placeholder"></div>
+</body>
+
+  <script src="../js/components.js"></script>
+  <script>
+    /* ── Nav active ── */
+    function setActive(el) {
+      document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+      el.classList.add('active');
+      document.getElementById('navLinks').classList.remove('open');
+    }
+
+    /* ── Burger mobile ── */
+    function toggleMenu() {
+      document.getElementById('navLinks').classList.toggle('open');
+    }
+
+    /* ── Active nav via scroll ── */
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${entry.target.id}`) {
+              link.classList.add('active');
+            }
+          });
+        }
+      });
+    }, { threshold: 0.4 });
+
+    sections.forEach(s => observer.observe(s));
+
+    /* ── Reveal au scroll ── */
+    const reveals = document.querySelectorAll('.reveal');
+    const revealObs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.12 });
+
+    reveals.forEach(el => revealObs.observe(el));
+    
+  </script>
+  <script>
+  const patchNotes = [
+    { tag: 'SECTION', text: 'Protocoles DMX' },
+  { tag: 'NEW', tagClass: 'pn-tag--new', text: 'Réception Art-Net en temps réel avec sélection d\'univers multiples.' },
+  { tag: 'NEW', tagClass: 'pn-tag--new', text: 'Support du protocole sACN (E1.31).' },
+  { tag: 'NEW', tagClass: 'pn-tag--new', text: 'Support USB DMX via port série — détection automatique des ports disponibles.' },
+
+  { tag: 'SECTION', text: 'Calcul de consommation' },
+  { tag: 'NEW', tagClass: 'pn-tag--new', text: 'Moteur de calcul temps réel : modes continu, variable (courbe libre) et trigger.' },
+  { tag: 'NEW', tagClass: 'pn-tag--new', text: 'Paliers DMX (tiers) — taux de consommation variable selon la plage active.' },
+  { tag: 'NEW', tagClass: 'pn-tag--new', text: 'Temps d\'effet restant estimé en direct par fixture.' },
+
+  { tag: 'SECTION', text: 'Machines & groupes' },
+  { tag: 'NEW', tagClass: 'pn-tag--new', text: 'Création de groupes de machines avec couleur et assignation libre.' },
+  { tag: 'NEW', tagClass: 'pn-tag--new', text: 'Système d\'armement des produits — canal DMX dédié avec seuil ±10 %.' },
+  { tag: 'NEW', tagClass: 'pn-tag--new', text: 'Gestion des variantes machine (choix de buses ou de profil DMX).' },
+  { tag: 'NEW', tagClass: 'pn-tag--new', text: 'Sélection en masse : mise à jour groupée, ré-adressage automatique, suppression multiple.' },
+  { tag: 'NEW', tagClass: 'pn-tag--new', text: 'Produits personnalisés en complément du catalogue XML.' },
+
+  { tag: 'SECTION', text: 'Tanks & stock' },
+  { tag: 'NEW', tagClass: 'pn-tag--new', text: 'Gestion de tanks partagés entre plusieurs fixtures avec suivi de consommation global.' },
+  { tag: 'NEW', tagClass: 'pn-tag--new', text: 'Refill individuel par groupe ou global en un clic.' },
+
+  { tag: 'SECTION', text: 'Sessions & historique' },
+  { tag: 'NEW', tagClass: 'pn-tag--new', text: 'Enregistrement automatique des sessions avec durée et consommation détaillée.' },
+  { tag: 'NEW', tagClass: 'pn-tag--new', text: 'Historique des sessions par projet — renommage et suppression.' },
+
+  { tag: 'SECTION', text: 'Projets & fichiers' },
+  { tag: 'NEW', tagClass: 'pn-tag--new', text: 'Sauvegarde locale et export au format .pts (PyroTrack Show).' },
+  { tag: 'NEW', tagClass: 'pn-tag--new', text: 'Ouverture d\'un fichier .pts par double-clic depuis l\'explorateur.' },
+
+  { tag: 'SECTION', text: 'Export & licence' },
+  { tag: 'NEW', tagClass: 'pn-tag--new', text: 'Export et ouverture PDF des rapports (licence Pro requise).' },
+  { tag: 'NEW', tagClass: 'pn-tag--new', text: 'Licence en ligne avec mode offline automatique — adapté aux régies sans réseau.' },
+
+  { tag: 'SECTION', text: 'Interface' },
+  { tag: 'NEW', tagClass: 'pn-tag--new', text: 'Raccourcis clavier globaux configurables.' },
+  { tag: 'CHG', tagClass: 'pn-tag--chg', text: 'Refonte complète de la feuille de styles (variables unifiées).' },
+  ];
+
+  const container = document.getElementById('patchnote-container');
+
+  patchNotes.forEach(item => {
+  const li = document.createElement('li');
+  
+  if (item.tag === 'SECTION') {
+    li.className = 'pn-section';
+    li.textContent = item.text;
+  } else {
+    li.className = 'pn-item';
+    // Ajout de la classe dynamique ici :
+    li.innerHTML = `
+      <span class="pn-tag ${item.tagClass}">${item.tag}</span>
+      <span class="pn-item-text">${item.text}</span>
+    `;
+  }
+  container.appendChild(li);
+});
+</script>
+</body>
+</html>
