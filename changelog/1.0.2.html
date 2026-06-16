@@ -17,8 +17,10 @@
   <!-- ── Téléchargement ───────────────────────────────── -->
   <section id="download">
   <div class="section-inner">
-    <h2 class="section-title reveal reveal-delay-1">Changelog Pyro<em>Track</em>System <br>Version <em id="page-version"></em>.</h2>
-
+    <h2 class="section-title reveal reveal-delay-1">Changelog Pyro<em>Track</em>System <br>Version <em class="page-version"></em>.</h2>
+<a id="download-link" href="#" class="btn-primary">
+Télécharger la version <em class="page-version"></em>
+</a>
     <div class="patchnote-grid">
       <ul id="patchnote-container" class="pn-list">
         </ul>
@@ -38,8 +40,11 @@
 
   <script src="../js/components.js"></script>
   <script>
-  const match = location.pathname.match(/(\d+\.\d+\.\d+)/);
-  if (match) document.getElementById('page-version').textContent = match[1];
+const match = location.pathname.match(/(\d+\.\d+\.\d+)/);
+if (match) {
+  document.querySelectorAll('.page-version').forEach(el => el.textContent = match[1]);
+  document.getElementById('download-link').href = `https://pyrotracksystem.com/download/PyroTrack_Setup_${match[1]}.exe`;
+}
 </script>
   <script>
     /* ── Nav active ── */

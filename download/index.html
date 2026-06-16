@@ -40,6 +40,15 @@
   </section>
   <hr class="red-rule">
 
+  <!-- ── Anciennes versions ───────────────────────────── -->
+  <section id="old-versions">
+    <div class="section-inner">
+      <h2 class="section-title reveal reveal-delay-1">Anciennes <em>Versions</em></h2>
+      <div id="old-versions-container" class="download-grid old-versions-grid">
+      </div>
+    </div>
+  </section>
+
 </main>
   <hr class="red-rule">
 <div id="footer-placeholder"></div>
@@ -112,8 +121,39 @@
     }
   }
 
-  // Lancer la fonction au chargement
   updateDownloadButton();
+</script>
+<script>
+
+  const allVersions = ['1.0.2'];
+
+  async function buildOldVersions() {
+    try {
+      const response = await fetch('https://licence-pyrotrack-gen.onrender.com/latest-version');
+      const data = await response.json();
+      const currentVersion = data.version;
+
+      const container = document.getElementById('old-versions-container');
+      const oldVersions = allVersions.filter(v => v !== currentVersion);
+
+      if (oldVersions.length === 0) {
+        container.innerHTML = '<p class="section-desc">Aucune ancienne version disponible.</p>';
+        return;
+      }
+
+      oldVersions.forEach(version => {
+        const a = document.createElement('a');
+        a.href = `../changelog/${version}.html`;
+        a.className = 'btn-log';
+        a.textContent = `Version ${version}`;
+        container.appendChild(a);
+      });
+    } catch (error) {
+      console.error("Erreur lors de la construction des anciennes versions :", error);
+    }
+  }
+
+  buildOldVersions();
 </script>
 </body>
 </html>
