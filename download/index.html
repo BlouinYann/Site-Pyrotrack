@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <link rel="icon" type="image/png" href="../images/icon.png">
+  <link rel="icon" type="image/png" href="../images/icon.png">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PyroTrack System — Système de suivi de consommation</title>
+  <title>PyroTrack System — Téléchargement</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@400;500;600&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
@@ -13,117 +13,126 @@
 <body>
 <div id="header-placeholder"></div>
 <main>
-  <!-- ── Téléchargement ───────────────────────────────── -->
+
+  <!-- -- Téléchargement --------------------------------- -->
   <section id="download">
     <div class="section-inner">
-      <h2 class="section-title reveal reveal-delay-1">Téléchargez Pyro<em>Track</em>System<br>pour Windows.</h2>
+      <h2 class="section-title reveal reveal-delay-1" data-i18n-html="dl_title">Téléchargez Pyro<em>Track</em>System<br>pour Windows.</h2>
 
       <div class="download-grid">
         <div>
-          <p class="section-desc reveal reveal-delay-2" style="margin-left: auto; margin-right: auto; width: fit-content;">
-  Le logiciel est actuellement en version bêta et est disponible pour les utilisateurs Windows.
-</p>
-<div class="download-container reveal reveal-delay-4" style="margin-top: 2rem;">
-  <!-- Bouton de téléchargement principal -->
-  <a id="download-link" href="#" class="btn-primary">
-    Chargement...
-  </a>
-  
-  <!-- Informations complémentaires -->
-          <p class="section-desc reveal reveal-delay-2" style="margin-left: auto; margin-right: auto; width: fit-content;">
-    Disponible pour Windows (x64)
-  </p>
-  <a id="changelog-link" href="#" class="btn-log">Voir les nouveautés</a></div>
+          <p class="section-desc reveal reveal-delay-2" style="margin-left: auto; margin-right: auto; width: fit-content;" data-i18n="dl_intro">
+            Le logiciel est actuellement en version bêta et est disponible pour les utilisateurs Windows.
+          </p>
+
+          <div class="download-container reveal reveal-delay-4" style="margin-top: 2rem;">
+            <a id="download-link" href="#" class="btn-primary" data-i18n="dl_btn_loading">
+              Chargement...
+            </a>
+
+            <p class="section-desc reveal reveal-delay-2" style="margin-left: auto; margin-right: auto; width: fit-content;" data-i18n="dl_platform">
+              Disponible pour Windows (x64)
+            </p>
+
+            <a id="changelog-link" href="#" class="btn-log" data-i18n="dl_changelog">Voir les nouveautés</a>
+          </div>
         </div>
       </div>
     </div>
   </section>
+
   <hr class="red-rule">
 
-  <!-- ── Anciennes versions ───────────────────────────── -->
+  <!-- -- Anciennes versions ----------------------------- -->
   <section id="old-versions">
     <div class="section-inner">
-      <h2 class="section-title reveal reveal-delay-1">Anciennes <em>Versions</em></h2>
+      <h2 class="section-title reveal reveal-delay-1" data-i18n-html="dl_old_title">Anciennes <em>Versions</em></h2>
       <div id="old-versions-container" class="download-grid old-versions-grid">
       </div>
     </div>
   </section>
 
 </main>
-  <hr class="red-rule">
+<hr class="red-rule">
 <div id="footer-placeholder"></div>
 
-</body>
-  <script src="../js/components.js"></script>
-  <script>
-    /* ── Nav active ── */
-    function setActive(el) {
-      document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-      el.classList.add('active');
-      document.getElementById('navLinks').classList.remove('open');
-    }
+<script src="../js/i18n.js"></script>
+<script src="../js/components.js"></script>
+<script>
+  /* -- Nav active -- */
+  function setActive(el) {
+    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+    el.classList.add('active');
+    document.getElementById('navLinks').classList.remove('open');
+  }
 
-    /* ── Burger mobile ── */
-    function toggleMenu() {
-      document.getElementById('navLinks').classList.toggle('open');
-    }
+  /* -- Burger mobile -- */
+  function toggleMenu() {
+    document.getElementById('navLinks').classList.toggle('open');
+  }
 
-    /* ── Active nav via scroll ── */
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-link');
+  /* -- Active nav via scroll -- */
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-link');
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === `#${entry.target.id}`) {
-              link.classList.add('active');
-            }
-          });
-        }
-      });
-    }, { threshold: 0.4 });
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${entry.target.id}`) {
+            link.classList.add('active');
+          }
+        });
+      }
+    });
+  }, { threshold: 0.4 });
 
-    sections.forEach(s => observer.observe(s));
+  sections.forEach(s => observer.observe(s));
 
-    /* ── Reveal au scroll ── */
-    const reveals = document.querySelectorAll('.reveal');
-    const revealObs = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.12 });
+  /* -- Reveal au scroll -- */
+  const reveals = document.querySelectorAll('.reveal');
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12 });
 
-    reveals.forEach(el => revealObs.observe(el));
-  </script>
-  <script> //Gestion de la dernière version disponible pour le téléchargement
+  reveals.forEach(el => revealObs.observe(el));
+</script>
+
+<script>
+  /* -- Dernière version disponible -- */
   async function updateDownloadButton() {
     try {
-      // Appel vers votre API
       const response = await fetch('https://licence-pyrotrack-gen.onrender.com/latest-version');
       const data = await response.json();
-      
-      // Récupération de l'élément HTML
+
       const btn = document.getElementById('download-link');
-      
-      // Mise à jour du lien et du texte
+      const lang = (typeof i18nGetCookie === 'function' && i18nGetCookie()) || 'fr';
+
       btn.href = data.downloadUrl;
-      btn.textContent = `Télécharger PyroTrack v${data.version}`;
+      btn.textContent = lang === 'en'
+        ? `Download PyroTrack v${data.version}`
+        : `Télécharger PyroTrack v${data.version}`;
+
       const logLink = document.getElementById('changelog-link');
       logLink.href = `/changelog/${data.version}.html`;
     } catch (error) {
       console.error("Erreur lors de la récupération de la version :", error);
-      // Optionnel : remettre un lien par défaut en cas d'échec
-      document.getElementById('download-link').textContent = "Télécharger PyroTrack";
+      const lang = (typeof i18nGetCookie === 'function' && i18nGetCookie()) || 'fr';
+      document.getElementById('download-link').textContent =
+        lang === 'en' ? 'Download PyroTrack' : 'Télécharger PyroTrack';
     }
   }
 
   updateDownloadButton();
 </script>
+
 <script>
+  /* -- Anciennes versions -- */
   async function buildOldVersions() {
     try {
       const [latestRes, allRes] = await Promise.all([
@@ -135,9 +144,12 @@
 
       const container = document.getElementById('old-versions-container');
       const oldVersions = versions.filter(v => v.version !== currentVersion);
+      const lang = (typeof i18nGetCookie === 'function' && i18nGetCookie()) || 'fr';
 
       if (oldVersions.length === 0) {
-        container.innerHTML = '<p class="section-desc">Aucune ancienne version disponible.</p>';
+        container.innerHTML = `<p class="section-desc">${
+          lang === 'en' ? 'No previous versions available.' : 'Aucune ancienne version disponible.'
+        }</p>`;
         return;
       }
 
@@ -155,5 +167,6 @@
 
   buildOldVersions();
 </script>
+
 </body>
 </html>

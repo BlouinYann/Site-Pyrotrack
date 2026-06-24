@@ -1,23 +1,29 @@
-<!-- ── TOP NAV ─────────────────────────────────── -->
+<!-- -- TOP NAV ----------------------------------- -->
   <nav class="top-nav" id="topNav">
     <div class="nav-brand">
       <a href="../" class="nav-logo">PTS</a>
       <div>
-        <a href="../" class="nav-brand-title">Pyro</span><span class="nav-brand-accent">Track</span><span class="nav-brand-title"> System</a>
+        <a href="../" class="nav-brand-title">Pyro<span class="nav-brand-accent">Track</span> System</a>
       </div>
     </div>
 
     <ul class="nav-links" id="navLinks">
-      <li><a href="../"     class="nav-link active" onclick="setActive(this)">ACCUEIL</a></li>
-      <li><a href="../#about"    class="nav-link"        onclick="setActive(this)">À PROPOS</a></li>
-      <li><a href="../#features" class="nav-link"        onclick="setActive(this)">FONCTIONS</a></li>
-      <li><a href="../contact/" class="nav-link"        onclick="setActive(this)">CONTACT</a></li>
-      <li><a href="../download/"     class="nav-link active" style="border-left: 10rem;" onclick="setActive(this)">TÉLÉCHARGER</a></li>
-
+      <li><a href="../"          class="nav-link active" data-i18n="nav_home" onclick="setActive(this)">ACCUEIL</a></li>
+      <li><a href="../#about"    class="nav-link"        data-i18n="nav_about" onclick="setActive(this)">À PROPOS</a></li>
+      <li><a href="../#features" class="nav-link"        data-i18n="nav_features" onclick="setActive(this)">FONCTIONS</a></li>
+      <li><a href="../contact/"  class="nav-link"        data-i18n="nav_contact" onclick="setActive(this)">CONTACT</a></li>
+      <li><a href="../download/" class="nav-link"        data-i18n="nav_download" onclick="setActive(this)">TÉLÉCHARGER</a></li>
     </ul>
 
     <div class="nav-right">
       <div class="nav-badge">🔥 BÊTA DISPONIBLE</div>
+      <button id="lang-btn" onclick="i18nToggle()">
+  <svg viewBox="0 0 16 16" aria-hidden="true">
+    <circle cx="8" cy="8" r="6.5"/>
+    <path d="M8 1.5C8 1.5 5.5 4 5.5 8s2.5 6.5 2.5 6.5M8 1.5C8 1.5 10.5 4 10.5 8S8 14.5 8 14.5M1.5 8h13"/>
+  </svg>
+  <span data-lang-label data-i18n="lang_btn">FR</span>
+</button>
     </div>
 
     <button class="nav-burger" id="burger" onclick="toggleMenu()" aria-label="Menu">

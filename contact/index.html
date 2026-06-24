@@ -4,7 +4,7 @@
   <link rel="icon" type="image/png" href="../images/icon.png">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PyroTrack System — Système de suivi de consommation</title>
+  <title>PyroTrack System — Contact</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@400;500;600&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
@@ -12,65 +12,68 @@
 </head>
 <body>
 
-  
 <div id="header-placeholder"></div>
 <main>
-  <!-- ── CONTACT ───────────────────────────────── -->
+
+  <!-- -- CONTACT --------------------------------- -->
   <section id="contact">
     <div class="section-inner">
-      <h2 class="section-title reveal reveal-delay-1" style="text-align: center;">Contacter Pyro<em>Track</em>System.</h2>
+      <h2 class="section-title reveal reveal-delay-1" style="text-align: center;" data-i18n-html="ct_title">Contacter Pyro<em>Track</em>System.</h2>
 
       <div class="download-grid">
         <div>
-          <p class="section-desc reveal reveal-delay-2" style="margin-left: auto; margin-right: auto; width: fit-content;">
-  Pour toutes question concernant le logiciel, les fonctionnalités, ou pour signaler un bug, vous pouvez nous contacter via le formulaire ci-dessous.
-  </p>
+          <p class="section-desc reveal reveal-delay-2" style="margin-left: auto; margin-right: auto; width: fit-content;" data-i18n="ct_intro">
+            Pour toutes question concernant le logiciel, les fonctionnalités, ou pour signaler un bug, vous pouvez nous contacter via le formulaire ci-dessous.
+          </p>
         </div>
       </div>
     </div>
-<form id="contact-form" action="https://formspree.io/f/mdavbwlq" method="POST" style="margin-top: 2rem;" class="contact-form">
-  <label>Nom :</label>
-  <input type="text" name="nom" required>
 
-  <label>Prénom :</label>
-  <input type="text" name="prenom" required>
+    <form id="contact-form" action="https://formspree.io/f/mdavbwlq" method="POST" style="margin-top: 2rem;" class="contact-form">
+      <label data-i18n="ct_field_lastname">Nom :</label>
+      <input type="text" name="nom" required data-i18n-attr="placeholder:ct_field_lastname">
 
-  <label>Adresse e-mail :</label>
-  <input type="email" name="email" required>
+      <label data-i18n="ct_field_firstname">Prénom :</label>
+      <input type="text" name="prenom" required data-i18n-attr="placeholder:ct_field_firstname">
 
-  <label>Objet :</label>
-  <input type="text" name="objet" required>
+      <label data-i18n="ct_field_email">Adresse e-mail :</label>
+      <input type="email" name="email" required data-i18n-attr="placeholder:ct_field_email">
 
-  <label>Message :</label>
-  <textarea name="message" required></textarea>
+      <label data-i18n="ct_field_subject">Objet :</label>
+      <input type="text" name="objet" required data-i18n-attr="placeholder:ct_field_subject">
 
-  <button type="submit">Envoyer</button>
-  <p id="form-status" style="margin-top: 10px; font-size: 0.9rem;"></p>
-</form>
+      <label data-i18n="ct_field_message">Message :</label>
+      <textarea name="message" required data-i18n-attr="placeholder:ct_field_message"></textarea>
+
+      <button type="submit" data-i18n="ct_submit">Envoyer</button>
+      <p id="form-status" style="margin-top: 10px; font-size: 0.9rem;"></p>
+    </form>
   </section>
+
   <hr class="red-rule">
 
-<div style="display: flex; justify-content: center; background-color: black; padding: 20px;">
-    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdAqW6OEsqVdJDd969dTSOmh3-63JIYPkk7kznsBSVzePBx7A/viewform?embedded=true" width="640" height="721" frameborder="0" marginheight="0" marginwidth="0">Chargement…</iframe>
+  <div style="display: flex; justify-content: center; background-color: black; padding: 20px;">
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdAqW6OEsqVdJDd969dTSOmh3-63JIYPkk7kznsBSVzePBx7A/viewform?embedded=true" width="640" height="721" frameborder="0" marginheight="0" marginwidth="0" data-i18n="ct_iframe_loading">Chargement…</iframe>
   </div>
+
   <hr class="red-rule">
 </main>
-  <div id="footer-placeholder"></div>
-</body>
-  <script src="../js/components.js"></script>
-  <script>
+<div id="footer-placeholder"></div>
+
+<script src="../js/i18n.js"></script>
+<script src="../js/components.js"></script>
+<script>
   const form = document.getElementById("contact-form");
   const status = document.getElementById("form-status");
 
   async function handleSubmit(event) {
     event.preventDefault();
-    
-    // Affichage d'un message de chargement
-    status.textContent = "Envoi en cours...";
-    status.style.color = "var(--light)"; 
+    const lang = (typeof i18nGetCookie === 'function' && i18nGetCookie()) || 'fr';
+
+    status.textContent = lang === 'en' ? 'Sending…' : 'Envoi en cours...';
+    status.style.color = "var(--light)";
 
     const data = new FormData(event.target);
-    
     const response = await fetch(event.target.action, {
       method: form.method,
       body: data,
@@ -78,60 +81,62 @@
     });
 
     if (response.ok) {
-      // Redirection après succès
-      status.textContent = "Message envoyé ! ";
+      status.textContent = lang === 'en' ? 'Message sent!' : 'Message envoyé !';
       status.style.color = "var(--green)";
     } else {
-      status.textContent = "Erreur lors de l'envoi. Veuillez réessayer.";
+      status.textContent = lang === 'en'
+        ? 'Error while sending. Please try again.'
+        : "Erreur lors de l'envoi. Veuillez réessayer.";
       status.style.color = "var(--red-bright)";
     }
   }
 
   form.addEventListener("submit", handleSubmit);
 </script>
-  <script>
-    /* ── Nav active ── */
-    function setActive(el) {
-      document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-      el.classList.add('active');
-      document.getElementById('navLinks').classList.remove('open');
-    }
+<script>
+  /* -- Nav active -- */
+  function setActive(el) {
+    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+    el.classList.add('active');
+    document.getElementById('navLinks').classList.remove('open');
+  }
 
-    /* ── Burger mobile ── */
-    function toggleMenu() {
-      document.getElementById('navLinks').classList.toggle('open');
-    }
+  /* -- Burger mobile -- */
+  function toggleMenu() {
+    document.getElementById('navLinks').classList.toggle('open');
+  }
 
-    /* ── Active nav via scroll ── */
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-link');
+  /* -- Active nav via scroll -- */
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-link');
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === `#${entry.target.id}`) {
-              link.classList.add('active');
-            }
-          });
-        }
-      });
-    }, { threshold: 0.4 });
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${entry.target.id}`) {
+            link.classList.add('active');
+          }
+        });
+      }
+    });
+  }, { threshold: 0.4 });
 
-    sections.forEach(s => observer.observe(s));
+  sections.forEach(s => observer.observe(s));
 
-    /* ── Reveal au scroll ── */
-    const reveals = document.querySelectorAll('.reveal');
-    const revealObs = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.12 });
+  /* -- Reveal au scroll -- */
+  const reveals = document.querySelectorAll('.reveal');
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12 });
 
-    reveals.forEach(el => revealObs.observe(el));
-  </script>
+  reveals.forEach(el => revealObs.observe(el));
+</script>
+
 </body>
 </html>

@@ -564,43 +564,40 @@ main {
     }
 
     .about-mockup {
-      width: 100%;
-      aspect-ratio: 16/10;
-      background: var(--surface);
-      border: 1px solid var(--border2);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      position: relative;
-    }
+  width: 100%;
+  aspect-ratio: 16/10;
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  border-radius: 0;                      
+  overflow: hidden;
+  position: relative;
+}
 
     .mockup-bar {
-      height: 32px;
-      background: rgba(10,10,10,0.8);
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      padding: 0 1rem;
-      gap: 0.5rem;
-    }
-
-    .mockup-dot {
-      width: 8px; height: 8px;
-      border-radius: 50%;
-    }
-
-    .mockup-dot:nth-child(1) { background: var(--red); }
-    .mockup-dot:nth-child(2) { background: var(--ember); opacity: 0.5; }
-    .mockup-dot:nth-child(3) { background: var(--green); opacity: 0.5; }
-
+  height: 30px;
+  background: rgba(10,10,10,0.95);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  padding: 0 0.75rem;
+  gap: 0;
+}
     .mockup-brand {
-      margin-left: auto;
-      font-family: var(--font-ui);
-      font-size: 0.72rem;
-      letter-spacing: 0.2em;
-      color: var(--text3);
-      text-transform: uppercase;
-    }
-
+  margin: 0 auto;                        
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  color: var(--text3);
+  text-transform: uppercase;
+}
+.mockup-bar::after {
+  content: '─ ☐ ✕';
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  color: var(--text3);
+  margin-left: auto;
+  font-family: var(--font-mono);
+}
     .mockup-body {
       padding: 1rem;
       display: grid;
@@ -1051,4 +1048,41 @@ textarea:-webkit-autofill:focus {
   -webkit-text-fill-color: var(--light); /* Couleur du texte */
   -webkit-box-shadow: 0 0 0px 1000px var(--dark) inset; /* Force le fond sombre */
   transition: background-color 5000s ease-in-out 0s; /* Empêche le changement de couleur au chargement */
+}
+#lang-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+  background: var(--surface);
+  color: var(--text2);
+  font-family: var(--font-ui);
+  font-weight: 700;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.75rem;
+  border: 1px solid var(--border2);
+  clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+}
+
+#lang-btn svg {
+  width: 13px;
+  height: 13px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.2;
+  flex-shrink: 0;
+  opacity: 0.85;
+}
+
+#lang-btn:hover {
+  border-color: var(--ember, #CC1111);
+  color: var(--ember, #CC1111);
+  background: rgba(204, 17, 17, 0.06);
+}
+
+#lang-btn:active {
+  transform: scale(0.96);
 }
