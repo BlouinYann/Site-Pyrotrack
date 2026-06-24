@@ -124,24 +124,24 @@
   updateDownloadButton();
 </script>
 <script>
-
-  const allVersions = ['1.0.2'];
-
   async function buildOldVersions() {
     try {
-      const response = await fetch('https://licence-pyrotrack-gen.onrender.com/latest-version');
-      const data = await response.json();
-      const currentVersion = data.version;
+      const [latestRes, allRes] = await Promise.all([
+        fetch('https://licence-pyrotrack-gen.onrender.com/latest-version'),
+        fetch('https://licence-pyrotrack-gen.onrender.com/all-versions')
+      ]);
+      const { version: currentVersion } = await latestRes.json();
+      const { versions } = await allRes.json();
 
       const container = document.getElementById('old-versions-container');
-      const oldVersions = allVersions.filter(v => v !== currentVersion);
+      const oldVersions = versions.filter(v => v.version !== currentVersion);
 
       if (oldVersions.length === 0) {
         container.innerHTML = '<p class="section-desc">Aucune ancienne version disponible.</p>';
         return;
       }
 
-      oldVersions.forEach(version => {
+      oldVersions.forEach(({ version }) => {
         const a = document.createElement('a');
         a.href = `../changelog/${version}.html`;
         a.className = 'btn-log';
