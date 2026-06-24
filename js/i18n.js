@@ -96,13 +96,106 @@ const I18N = {
     nav_home:     'Home',
     nav_about:    'About',
     nav_features: 'Features',
+    nav_faq:      'Q&A',
     nav_contact:  'Contact',
     nav_download: 'Download',
     /* Footer */
     footer_mentions: 'Legal Notice',
     footer_cgu:      'Terms of Use',
     footer_cgv:      'Sales Terms',
-    footer_right:   '© 2026 PyroTrack System. All rights reserved.'
+    footer_right:   '© 2026 PyroTrack System. All rights reserved.',
+
+    faq_page_title: 'FAQ — PyroTrack System',
+ 
+faq_hero_label: 'Frequently asked questions',
+faq_hero_title: 'FAQ & Support',
+faq_hero_sub: 'Everything you need to know before downloading and using PyroTrack System.',
+ 
+faq_toc_title: 'Categories',
+faq_toc_compat: 'Compatibility & technical',
+faq_toc_licence: 'License & version',
+faq_toc_features: 'Features',
+faq_toc_field: 'Field use',
+faq_toc_support: 'Support & bugs',
+ 
+// 01 — Compatibility & technical
+faq_compat_title: 'Compatibility & technical',
+ 
+faq_compat_q1: 'Which operating system does PyroTrack System run on?',
+faq_compat_a1: 'PyroTrack System is developed and tested on Windows 11. Since the software is built on Electron, it should also work on Windows 10 in principle. Compatibility with macOS and Linux is not guaranteed at this stage.',
+ 
+faq_compat_q2: 'Which DMX adapters are compatible?',
+faq_compat_a2: 'PyroTrack System is compatible with any DMX adapter that has a DMX input (DMX In). The software also supports receiving the ArtNet and sACN protocols. No specific brand is required.',
+ 
+faq_compat_q3: 'Does PyroTrack System send DMX?',
+faq_compat_a3: 'No. PyroTrack System is a DMX frame reading software only. It receives the DMX signal from your console or control software to extract consumption data. It does not write DMX and does not control devices.',
+ 
+faq_compat_q4: 'Do I need to install additional drivers?',
+faq_compat_a4: 'No. Everything the software needs is included in the installer. No additional download or installation is required.',
+ 
+faq_compat_q5: 'Can the software be used without a connected DMX signal?',
+faq_compat_a5: 'The software requires an active DMX source (USB, ArtNet or sACN) for consumption tracking to work. Without an incoming signal, the live view will not receive any data.',
+ 
+faq_compat_q6: 'Can multiple DMX universes be managed simultaneously?',
+faq_compat_a6: 'Yes. PyroTrack System supports managing multiple DMX universes simultaneously via ArtNet and sACN.',
+ 
+// 02 — License & version
+faq_licence_title: 'License & version',
+ 
+faq_licence_q1: 'What are the limitations of the beta version?',
+faq_licence_a1: 'The beta version is limited to 10 fixtures, 20 minutes of consumption calculation per session, and PDF export is disabled. The full version will lift all of these limitations.',
+ 
+faq_licence_q2: 'Is the license per machine or per user?',
+faq_licence_a2: 'The license can be configured by number of seats. You can purchase a license for a single seat or for a defined number of machines depending on your needs.',
+ 
+faq_licence_q3: 'Does the software work without an internet connection?',
+faq_licence_a3: 'Yes. PyroTrack System works offline. License activation requires an internet connection, and a periodic check is performed when a connection is available. The software remains usable between these checks.',
+ 
+// 03 — Features
+faq_features_title: 'Features',
+ 
+faq_features_q1: 'What types of effects are supported?',
+faq_features_a1: 'PyroTrack System is designed for any stage effect with measurable consumption. Currently supported: flame, smoke, CO₂, sparks, bubbles and confetti. The software is not limited to pyrotechnics — any FX effect with consumption can be tracked.',
+ 
+faq_features_q2: 'How many fixtures can be managed in the full version?',
+faq_features_a2: 'The full version has no limit on the number of fixtures.',
+ 
+faq_features_q3: 'Can fixtures be imported from other software (MVR, GDTF…)?',
+faq_features_a3: 'MVR or GDTF import is not available at this stage. Fixture management is done entirely from within the software. If a product is missing from the library, you can request it via the contact page, specifying the desired model.',
+ 
+faq_features_q4: 'What is the .pts format?',
+faq_features_a4: 'The .pts (PyroTrack Session) format is PyroTrack System\'s proprietary file format. It contains all the data of your project: fixtures, groups, session history. It can only be opened by PyroTrack System.',
+ 
+faq_features_q5: 'Are PDF reports customizable?',
+faq_features_a5: 'Not yet. PDF export generates a standardized report. Customization (logo, header) is not available at this time.',
+ 
+// 04 — Field use
+faq_field_title: 'Field use',
+ 
+faq_field_q1: 'Is the software tested in real conditions?',
+faq_field_a1: 'Yes. PyroTrack System has been used and validated during real show conditions, on a stage laptop.',
+ 
+faq_field_q2: 'Can consumption be tracked from a device other than the main PC?',
+faq_field_a2: 'Yes. PyroTrack System includes a password-protected monitoring web page accessible from any device connected to the same local network. This allows a secondary operator (control room, stage) to view consumption in real time without accessing the main PC.',
+ 
+faq_field_q3: 'Does the software support multi-station networking?',
+faq_field_a3: 'No, there isn\'t a multi-station mode as such. A single PC runs the software. Other devices on the network can only view the data via the monitoring web page (read-only).',
+ 
+// 05 — Support & bugs
+faq_support_title: 'Support & bugs',
+ 
+faq_support_q1: 'Is there documentation or a user manual?',
+faq_support_a1: 'Not yet. Documentation is planned. In the meantime, feel free to ask your questions via the contact page.',
+ 
+faq_support_q2: 'How do I report a bug?',
+faq_support_a2: 'Send your report via the contact page with BUG — at the start of the subject line. Specify your Windows version, the software version, and the steps to reproduce the issue.',
+ 
+faq_support_q3: 'Is there a community or forum?',
+faq_support_a3: 'No forum or Discord yet. You can follow us on Instagram: "https://www.instagram.com/pyrotracksystem" for announcements and updates.',
+ 
+// CTA contact
+faq_cta_text: 'Can\'t find your answer? Contact us directly, we respond to every request.',
+faq_cta_btn: 'Contact us',
   } 
 };
 

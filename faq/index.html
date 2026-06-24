@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="/images/icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/icon.png">
+  <link rel="apple-touch-icon" href="/images/icon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-i18n="faq_page_title">FAQ — PyroTrack System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;900&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body class="legal-page">
+
+<div id="header-placeholder"></div>
+
+  <div class="legal-hero">
+    <p class="hero-label" data-i18n="faq_hero_label">Questions fréquentes</p>
+    <h1 data-i18n="faq_hero_title">FAQ <em>& Support</em></h1>
+    <p class="hero-sub" data-i18n="faq_hero_sub">Tout ce que vous devez savoir avant de télécharger et d'utiliser PyroTrack System.</p>
+  </div>
+
+  <div class="legal-content">
+
+    <!-- SOMMAIRE -->
+    <div class="section" style="padding-top:2rem">
+      <div class="toc">
+        <p class="toc-title" data-i18n="faq_toc_title">Catégories</p>
+        <ul>
+          <li><a href="#compatibilite" data-i18n="faq_toc_compat">Compatibilité & technique</a></li>
+          <li><a href="#licence" data-i18n="faq_toc_licence">Licence & version</a></li>
+          <li><a href="#fonctionnalites" data-i18n="faq_toc_features">Fonctionnalités</a></li>
+          <li><a href="#terrain" data-i18n="faq_toc_field">Usage terrain</a></li>
+          <li><a href="#support" data-i18n="faq_toc_support">Support & bugs</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- COMPATIBILITÉ -->
+    <div class="section" id="compatibilite">
+      <div class="section-header">
+        <span class="section-label">01</span>
+        <h2 data-i18n="faq_compat_title">Compatibilité <em>&amp; technique</em></h2>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggle(this)">
+          <span class="faq-question-text" data-i18n="faq_compat_q1">Sur quel système d'exploitation fonctionne PyroTrack System ?</span>
+          <span class="faq-icon"><svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="5" y1="1" x2="5" y2="9" stroke-width="1.5"/><line x1="1" y1="5" x2="9" y2="5" stroke-width="1.5"/></svg></span>
+        </button>
+        <div class="faq-answer">
+          <p data-i18n="faq_compat_a1">PyroTrack System est développé et testé sous <strong>Windows 11</strong>. Le logiciel étant basé sur Electron, il est en principe compatible avec Windows 10 également. La compatibilité avec macOS et Linux n'est pas garantie à ce stade.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggle(this)">
+          <span class="faq-question-text" data-i18n="faq_compat_q2">Quels adaptateurs DMX sont compatibles ?</span>
+          <span class="faq-icon"><svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="5" y1="1" x2="5" y2="9" stroke-width="1.5"/><line x1="1" y1="5" x2="9" y2="5" stroke-width="1.5"/></svg></span>
+        </button>
+        <div class="faq-answer">
+          <p data-i18n="faq_compat_a2">PyroTrack System est compatible avec tout adaptateur DMX disposant d'une entrée DMX (DMX In). Le logiciel prend également en charge les protocoles <strong>ArtNet</strong> et <strong>sACN</strong> en réception. Aucune marque spécifique n'est requise.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggle(this)">
+          <span class="faq-question-text" data-i18n="faq_compat_q3">PyroTrack System envoie-t-il du DMX ?</span>
+          <span class="faq-icon"><svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="5" y1="1" x2="5" y2="9" stroke-width="1.5"/><line x1="1" y1="5" x2="9" y2="5" stroke-width="1.5"/></svg></span>
+        </button>
+        <div class="faq-answer">
+          <p data-i18n="faq_compat_a3">Non. PyroTrack System est un logiciel de <strong>lecture de trame DMX</strong> uniquement. Il reçoit le signal DMX provenant de votre console ou logiciel de pilotage pour en extraire les données de consommation. Il n'écrit pas de DMX et ne pilote pas d'appareils.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggle(this)">
+          <span class="faq-question-text" data-i18n="faq_compat_q4">Faut-il installer des drivers supplémentaires ?</span>
+          <span class="faq-icon"><svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="5" y1="1" x2="5" y2="9" stroke-width="1.5"/><line x1="1" y1="5" x2="9" y2="5" stroke-width="1.5"/></svg></span>
+        </button>
+        <div class="faq-answer">
+          <p data-i18n="faq_compat_a4">Non. Tout ce dont le logiciel a besoin est inclus dans l'installateur. Aucun téléchargement ou installation supplémentaire n'est nécessaire.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggle(this)">
+          <span class="faq-question-text" data-i18n="faq_compat_q5">Peut-on utiliser le logiciel sans signal DMX connecté ?</span>
+          <span class="faq-icon"><svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="5" y1="1" x2="5" y2="9" stroke-width="1.5"/><line x1="1" y1="5" x2="9" y2="5" stroke-width="1.5"/></svg></span>
+        </button>
+        <div class="faq-answer">
+          <p data-i18n="faq_compat_a5">Le logiciel nécessite une source DMX active (USB, ArtNet ou sACN) pour que le suivi de consommation fonctionne. Sans signal entrant, la vue live ne recevra pas de données.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggle(this)">
+          <span class="faq-question-text" data-i18n="faq_compat_q6">Peut-on gérer plusieurs univers DMX simultanément ?</span>
+          <span class="faq-icon"><svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="5" y1="1" x2="5" y2="9" stroke-width="1.5"/><line x1="1" y1="5" x2="9" y2="5" stroke-width="1.5"/></svg></span>
+        </button>
+        <div class="faq-answer">
+          <p data-i18n="faq_compat_a6">Oui. PyroTrack System supporte la gestion de <strong>plusieurs univers DMX</strong> simultanément via ArtNet et sACN.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- LICENCE -->
+    <div class="section" id="licence">
+      <div class="section-header">
+        <span class="section-label">02</span>
+        <h2 data-i18n="faq_licence_title">Licence <em>&amp; version</em></h2>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggle(this)">
+          <span class="faq-question-text" data-i18n="faq_licence_q1">Quelles sont les limitations de la version bêta ?</span>
+          <span class="faq-icon"><svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="5" y1="1" x2="5" y2="9" stroke-width="1.5"/><line x1="1" y1="5" x2="9" y2="5" stroke-width="1.5"/></svg></span>
+        </button>
+        <div class="faq-answer">
+          <p data-i18n="faq_licence_a1">La version bêta est limitée à <strong>10 fixtures</strong>, <strong>20 minutes</strong> de calcul de consommation par session, et l'<strong>export PDF est désactivé</strong>. La version complète lèvera l'ensemble de ces limitations.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggle(this)">
+          <span class="faq-question-text" data-i18n="faq_licence_q2">La licence est-elle par machine ou par utilisateur ?</span>
+          <span class="faq-icon"><svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="5" y1="1" x2="5" y2="9" stroke-width="1.5"/><line x1="1" y1="5" x2="9" y2="5" stroke-width="1.5"/></svg></span>
+        </button>
+        <div class="faq-answer">
+          <p data-i18n="faq_licence_a2">La licence peut être configurée par nombre de postes. Il est possible d'acquérir une licence pour un seul poste ou pour un nombre défini de machines selon vos besoins.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggle(this)">
+          <span class="faq-question-text" data-i18n="faq_licence_q3">Le logiciel fonctionne-t-il sans connexion internet ?</span>
+          <span class="faq-icon"><svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="5" y1="1" x2="5" y2="9" stroke-width="1.5"/><line x1="1" y1="5" x2="9" y2="5" stroke-width="1.5"/></svg></span>
+        </button>
+        <div class="faq-answer">
+          <p data-i18n="faq_licence_a3">Oui. PyroTrack System fonctionne <strong>en mode hors ligne</strong>. L'activation de la licence nécessite une connexion internet, et une vérification périodique est effectuée lorsqu'une connexion est disponible. Le logiciel reste utilisable entre ces vérifications.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- FONCTIONNALITÉS -->
+    <div class="section" id="fonctionnalites">
+      <div class="section-header">
+        <span class="section-label">03</span>
+        <h2 data-i18n="faq_features_title"><em>Fonctionnalités</em></h2>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggle(this)">
+          <span class="faq-question-text" data-i18n="faq_features_q1">Quels types d'effets sont pris en charge ?</span>
+          <span class="faq-icon"><svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="5" y1="1" x2="5" y2="9" stroke-width="1.5"/><line x1="1" y1="5" x2="9" y2="5" stroke-width="1.5"/></svg></span>
+        </button>
+        <div class="faq-answer">
+          <p data-i18n="faq_features_a1">PyroTrack System est conçu pour tout effet scénique ayant une consommation mesurable. Sont actuellement supportés : <strong>flame, smoke, CO₂, étincelles, bulles et confettis</strong>. Le logiciel ne se limite pas au pyrotechnique — tout effet FX avec consommation peut être suivi.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggle(this)">
+          <span class="faq-question-text" data-i18n="faq_features_q2">Combien de fixtures peut-on gérer en version complète ?</span>
+          <span class="faq-icon"><svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="5" y1="1" x2="5" y2="9" stroke-width="1.5"/><line x1="1" y1="5" x2="9" y2="5" stroke-width="1.5"/></svg></span>
+        </button>
+        <div class="faq-answer">
+          <p data-i18n="faq_features_a2">La version complète ne impose <strong>aucune limite</strong> sur le nombre de fixtures.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggle(this)">
+          <span class="faq-question-text" data-i18n="faq_features_q3">Peut-on importer des fixtures depuis d'autres logiciels (MVR, GDTF…) ?</span>
+          <span class="faq-icon"><svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="5" y1="1" x2="5" y2="9" stroke-width="1.5"/><line x1="1" y1="5" x2="9" y2="5" stroke-width="1.5"/></svg></span>
+        </button>
+        <div class="faq-answer">
+          <p data-i18n="faq_features_a3">L'import MVR ou GDTF n'est pas disponible à ce stade. La gestion des fixtures se fait entièrement depuis le logiciel. Si un produit manque à la librairie, vous pouvez en faire la demande via la <a href="/contact/">page contact</a> en précisant le modèle souhaité.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggle(this)">
+          <span class="faq-question-text" data-i18n="faq_features_q4">Qu'est-ce que le format .pts ?</span>
+          <span class="faq-icon"><svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="5" y1="1" x2="5" y2="9" stroke-width="1.5"/><line x1="1" y1="5" x2="9" y2="5" stroke-width="1.5"/></svg></span>
+        </button>
+        <div class="faq-answer">
+          <p data-i18n="faq_features_a4">Le format <strong>.pts</strong> (PyroTrack Session) est le format de fichier propriétaire de PyroTrack System. Il contient l'ensemble des données de votre projet : fixtures, groupes, historique de session. Il ne peut être ouvert que par PyroTrack System.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggle(this)">
+          <span class="faq-question-text" data-i18n="faq_features_q5">Les rapports PDF sont-ils personnalisables ?</span>
+          <span class="faq-icon"><svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="5" y1="1" x2="5" y2="9" stroke-width="1.5"/><line x1="1" y1="5" x2="9" y2="5" stroke-width="1.5"/></svg></span>
+        </button>
+        <div class="faq-answer">
+          <p data-i18n="faq_features_a5">Pas encore. L'export PDF génère un rapport standardisé. La personnalisation (logo, en-tête) n'est pas disponible pour le moment.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TERRAIN -->
+    <div class="section" id="terrain">
+      <div class="section-header">
+        <span class="section-label">04</span>
+        <h2 data-i18n="faq_field_title">Usage <em>terrain</em></h2>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggle(this)">
+          <span class="faq-question-text" data-i18n="faq_field_q1">Le logiciel est-il testé en conditions réelles ?</span>
+          <span class="faq-icon"><svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="5" y1="1" x2="5" y2="9" stroke-width="1.5"/><line x1="1" y1="5" x2="9" y2="5" stroke-width="1.5"/></svg></span>
+        </button>
+        <div class="faq-answer">
+          <p data-i18n="faq_field_a1">Oui. PyroTrack System a été utilisé et validé lors de sessions en conditions réelles de spectacle, sur laptop de scène.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggle(this)">
+          <span class="faq-question-text" data-i18n="faq_field_q2">Peut-on suivre la consommation depuis un autre appareil que le PC principal ?</span>
+          <span class="faq-icon"><svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="5" y1="1" x2="5" y2="9" stroke-width="1.5"/><line x1="1" y1="5" x2="9" y2="5" stroke-width="1.5"/></svg></span>
+        </button>
+        <div class="faq-answer">
+          <p data-i18n="faq_field_a2">Oui. PyroTrack System intègre une <strong>page web de monitoring</strong> accessible via mot de passe depuis n'importe quel appareil connecté au même réseau local. Cela permet à un opérateur secondaire (régie, plateau) de consulter la consommation en temps réel sans accéder au PC principal.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggle(this)">
+          <span class="faq-question-text" data-i18n="faq_field_q3">Le logiciel supporte-t-il le multi-poste en réseau ?</span>
+          <span class="faq-icon"><svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="5" y1="1" x2="5" y2="9" stroke-width="1.5"/><line x1="1" y1="5" x2="9" y2="5" stroke-width="1.5"/></svg></span>
+        </button>
+        <div class="faq-answer">
+          <p data-i18n="faq_field_a3">Non, il n'y a pas de mode multi-poste à proprement parler. Un seul PC fait tourner le logiciel. Les autres appareils du réseau peuvent uniquement <strong>consulter</strong> les données via la page web de monitoring (lecture seule).</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SUPPORT -->
+    <div class="section" id="support">
+      <div class="section-header">
+        <span class="section-label">05</span>
+        <h2 data-i18n="faq_support_title">Support <em>&amp; bugs</em></h2>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggle(this)">
+          <span class="faq-question-text" data-i18n="faq_support_q1">Y a-t-il une documentation ou un manuel utilisateur ?</span>
+          <span class="faq-icon"><svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="5" y1="1" x2="5" y2="9" stroke-width="1.5"/><line x1="1" y1="5" x2="9" y2="5" stroke-width="1.5"/></svg></span>
+        </button>
+        <div class="faq-answer">
+          <p data-i18n="faq_support_a1">Pas encore. Une documentation est prévue. En attendant, n'hésitez pas à poser vos questions via la <a href="/contact/">page contact</a>.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggle(this)">
+          <span class="faq-question-text" data-i18n="faq_support_q2">Comment signaler un bug ?</span>
+          <span class="faq-icon"><svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="5" y1="1" x2="5" y2="9" stroke-width="1.5"/><line x1="1" y1="5" x2="9" y2="5" stroke-width="1.5"/></svg></span>
+        </button>
+        <div class="faq-answer">
+          <p data-i18n="faq_support_a2">Envoyez votre rapport via la <a href="/contact/">page contact</a> en indiquant <strong>BUG —</strong> au début de l'objet. Précisez votre version Windows, la version du logiciel, et les étapes pour reproduire le problème.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggle(this)">
+          <span class="faq-question-text" data-i18n="faq_support_q3">Y a-t-il une communauté ou un forum ?</span>
+          <span class="faq-icon"><svg viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="5" y1="1" x2="5" y2="9" stroke-width="1.5"/><line x1="1" y1="5" x2="9" y2="5" stroke-width="1.5"/></svg></span>
+        </button>
+        <div class="faq-answer">
+          <p data-i18n="faq_support_a3">Pas encore de forum ou Discord. Vous pouvez nous suivre sur Instagram : <a href="https://www.instagram.com/pyrotracksystem" target="_blank" rel="noopener">@pyrotracksystem</a> pour les annonces et mises à jour.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA CONTACT -->
+    <div class="section" style="padding-bottom:0">
+      <div class="contact-cta">
+        <p data-i18n="faq_cta_text"><strong>Vous ne trouvez pas votre réponse ?</strong><br>Contactez-nous directement, nous répondons à toutes les demandes.</p>
+        <a href="/contact/" class="btn" data-i18n="faq_cta_btn">Nous contacter</a>
+      </div>
+    </div>
+
+  </div>
+
+<div id="footer-placeholder"></div>
+
+<script src="/js/i18n.js"></script>
+<script src="/js/components.js"></script>
+<script>
+  function toggle(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+
+    // Fermer tous les items ouverts avec animation
+    document.querySelectorAll('.faq-item.open').forEach(el => {
+      const answer = el.querySelector('.faq-answer');
+      answer.style.maxHeight = answer.scrollHeight + 'px';
+      requestAnimationFrame(() => {
+        answer.style.maxHeight = '0';
+        answer.style.opacity = '0';
+      });
+      el.classList.remove('open');
+    });
+
+    // Ouvrir le cliqué si il était fermé
+    if (!isOpen) {
+      const answer = item.querySelector('.faq-answer');
+      item.classList.add('open');
+      answer.style.maxHeight = answer.scrollHeight + 'px';
+      answer.style.opacity = '1';
+      // Libérer max-height une fois l'anim terminée (pour le contenu dynamique)
+      answer.addEventListener('transitionend', () => {
+        if (item.classList.contains('open')) answer.style.maxHeight = 'none';
+      }, { once: true });
+    }
+  }
+</script>
+
+</body>
+</html>
