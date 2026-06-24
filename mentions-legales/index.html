@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="google-site-verification" content="aqh7HLS4BJTcuqyCYUnD9Z_hsDeaVh-fONq4WbLVpbU" />
+  <link rel="icon" type="image/png" href="/images/icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/icon.png">
+  <link rel="apple-touch-icon" href="/images/icon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mentions Légales — PyroTrack System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;900&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0a;
+      --surface: #111111;
+      --border: #222222;
+      --red: #CC1111;
+      --red-dim: #8a0b0b;
+      --text: #e0e0e0;
+      --muted: #888888;
+      --white: #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2.5rem;
+      height: 56px;
+    }
+
+    .nav-logo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 1.2rem;
+      letter-spacing: 0.08em;
+      color: var(--white);
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .nav-logo span { color: var(--red); }
+
+    .nav-back {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-back:hover { color: var(--red); }
+
+    /* HERO */
+    .hero {
+      margin-top: 56px;
+      padding: 5rem 2.5rem 3rem;
+      border-bottom: 1px solid var(--border);
+      max-width: 860px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: clamp(2.8rem, 6vw, 4.5rem);
+      line-height: 1;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--red);
+    }
+
+    .hero-sub {
+      color: var(--muted);
+      font-size: 0.9rem;
+      max-width: 500px;
+    }
+
+    /* CONTENT */
+    .content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 2.5rem 6rem;
+    }
+
+    /* SECTION */
+    .section {
+      border-top: 1px solid var(--border);
+      padding: 3rem 0;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 1.2rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .section-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      color: var(--red-dim);
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
+
+    .section h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 1.5rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--white);
+    }
+
+    .section h2 em {
+      font-style: normal;
+      color: var(--red);
+    }
+
+    /* CARD */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 1.5rem 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .card-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .card-value {
+      color: var(--text);
+      font-size: 0.95rem;
+    }
+
+    .card-value strong {
+      color: var(--white);
+      font-weight: 500;
+    }
+
+    .card-value a {
+      color: var(--red);
+      text-decoration: none;
+    }
+
+    .card-value a:hover {
+      text-decoration: underline;
+    }
+
+    /* GRID 2 colonnes */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    @media (max-width: 600px) {
+      .grid-2 { grid-template-columns: 1fr; }
+      nav { padding: 0 1.2rem; }
+      .hero, .content { padding-left: 1.2rem; padding-right: 1.2rem; }
+    }
+
+    /* PROSE */
+    .prose p {
+      color: var(--text);
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+    }
+
+    .prose p:last-child { margin-bottom: 0; }
+
+    .prose a {
+      color: var(--red);
+      text-decoration: none;
+    }
+
+    .prose a:hover { text-decoration: underline; }
+
+    /* TAG inline */
+    .tag {
+      display: inline-block;
+      background: var(--red-dim);
+      color: var(--white);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.15em 0.6em;
+      margin-left: 0.4rem;
+      vertical-align: middle;
+    }
+
+    /* TABLE DES MATIÈRES */
+    .toc {
+      background: var(--surface);
+      border-left: 3px solid var(--red);
+      padding: 1.5rem 2rem;
+      margin-bottom: 0;
+    }
+
+    .toc-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .toc ol {
+      list-style: none;
+      counter-reset: toc;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.3rem 2rem;
+    }
+
+    @media (max-width: 600px) { .toc ol { grid-template-columns: 1fr; } }
+
+    .toc li {
+      counter-increment: toc;
+      font-size: 0.85rem;
+    }
+
+    .toc li::before {
+      content: "0" counter(toc) " —";
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      color: var(--red-dim);
+      margin-right: 0.4rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+    }
+
+    .toc a {
+      color: var(--text);
+      text-decoration: none;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .toc a:hover { color: var(--red); }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 2.5rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+
+    footer a { color: var(--red); text-decoration: none; }
+  </style>
+</head>
+<body>
+<div id="header-placeholder"></div>
+  <div class="hero">
+    <p class="hero-label">Informations légales</p>
+    <h1>Mentions <em>Légales</em></h1>
+    <p class="hero-sub">Conformément à la loi n°2004-575 du 21 juin 2004 pour la confiance en l'économie numérique (LCEN).</p>
+  </div>
+
+  <div class="content">
+
+    <!-- TABLE DES MATIÈRES -->
+    <div class="section" style="padding-top:2rem">
+      <div class="toc">
+        <p class="toc-title">Sommaire</p>
+        <ol>
+          <li><a href="#editeur">Éditeur du site</a></li>
+          <li><a href="#hebergement">Hébergement</a></li>
+          <li><a href="#propriete">Propriété intellectuelle</a></li>
+          <li><a href="#donnees">Données personnelles</a></li>
+          <li><a href="#cookies">Cookies</a></li>
+          <li><a href="#responsabilite">Responsabilité</a></li>
+          <li><a href="#loi">Loi applicable</a></li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- 01 ÉDITEUR -->
+    <div class="section" id="editeur">
+      <div class="section-header">
+        <span class="section-num">01</span>
+        <h2>Éditeur du <em>site</em></h2>
+      </div>
+      <div class="grid-2">
+        <div class="card">
+          <p class="card-title">Responsable de publication</p>
+          <p class="card-value"><strong>Yann BLOUIN</strong><br>Personne physique</p>
+        </div>
+        <div class="card">
+          <p class="card-title">Contact</p>
+          <p class="card-value"><a href="mailto:pyrotracksystem@gmail.com">pyrotracksystem@gmail.com</a></p>
+        </div>
+        <div class="card" style="grid-column: 1 / -1">
+          <p class="card-title">Adresse postale</p>
+          <p class="card-value">Disponible sur demande à <a href="mailto:pyrotracksystem@gmail.com">pyrotracksystem@gmail.com</a></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 02 HÉBERGEMENT -->
+    <div class="section" id="hebergement">
+      <div class="section-header">
+        <span class="section-num">02</span>
+        <h2><em>Hébergement</em></h2>
+      </div>
+      <div class="grid-2">
+        <div class="card">
+          <p class="card-title">Hébergeur du site</p>
+          <p class="card-value">
+            <strong>GitHub, Inc.</strong><br>
+            88 Colin P Kelly Jr St<br>
+            San Francisco, CA 94107 — États-Unis<br>
+            <a href="https://pages.github.com" target="_blank" rel="noopener">pages.github.com</a>
+          </p>
+        </div>
+        <div class="card">
+          <p class="card-title">Registraire du nom de domaine</p>
+          <p class="card-value">
+            <strong>IONOS SE</strong><br>
+            Elgendorfer Str. 57<br>
+            56410 Montabaur — Allemagne<br>
+            <a href="https://www.ionos.fr" target="_blank" rel="noopener">ionos.fr</a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 03 PROPRIÉTÉ INTELLECTUELLE -->
+    <div class="section" id="propriete">
+      <div class="section-header">
+        <span class="section-num">03</span>
+        <h2>Propriété <em>intellectuelle</em></h2>
+      </div>
+      <div class="prose">
+        <p>L'ensemble du contenu de ce site — textes, visuels, logo, interface, nom « PyroTrack System » — est la propriété exclusive de Yann BLOUIN et est protégé par les lois françaises et internationales relatives à la propriété intellectuelle.</p>
+        <p>Le logiciel PyroTrack System, ses fichiers sources, son identité visuelle et sa documentation sont protégés par le droit d'auteur. Toute reproduction, distribution, modification ou exploitation, totale ou partielle, sans autorisation écrite préalable est strictement interdite.</p>
+        <p>Pour toute demande de réutilisation : <a href="mailto:pyrotracksystem@gmail.com">pyrotracksystem@gmail.com</a></p>
+      </div>
+    </div>
+
+    <!-- 04 DONNÉES PERSONNELLES -->
+    <div class="section" id="donnees">
+      <div class="section-header">
+        <span class="section-num">04</span>
+        <h2>Données <em>personnelles</em></h2>
+      </div>
+
+      <div class="prose" style="margin-bottom:1.5rem">
+        <p>Conformément au Règlement Général sur la Protection des Données (RGPD — UE 2016/679) et à la loi Informatique et Libertés, vous disposez d'un droit d'accès, de rectification, d'effacement et d'opposition sur vos données personnelles. Pour exercer ces droits : <a href="mailto:pyrotracksystem@gmail.com">pyrotracksystem@gmail.com</a></p>
+      </div>
+
+      <div class="card" style="margin-bottom:1rem">
+        <p class="card-title">Formulaire de contact <span class="tag">Données personnelles</span></p>
+        <p class="card-value">
+          Le formulaire de contact (<a href="/contact/">/contact</a>) est géré par <strong>Formspree, Inc.</strong> Les données saisies (nom, prénom, adresse e-mail, objet, message) sont transmises via leur infrastructure afin de répondre à votre demande. Elles ne sont pas utilisées à des fins commerciales ou partagées avec des tiers.<br><br>
+          Politique de confidentialité Formspree : <a href="https://formspree.io/legal/privacy-policy/" target="_blank" rel="noopener">formspree.io/legal/privacy-policy</a>
+        </p>
+      </div>
+
+      <div class="card">
+        <p class="card-title">Formulaire de suggestion de produits</p>
+        <p class="card-value">
+          Le formulaire de suggestion de produits à la librairie est géré par <strong>Google Forms</strong> (Google LLC). Ce formulaire ne collecte aucune donnée personnelle identifiable.<br><br>
+          Politique de confidentialité Google : <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a>
+        </p>
+      </div>
+    </div>
+
+    <!-- 05 COOKIES -->
+    <div class="section" id="cookies">
+      <div class="section-header">
+        <span class="section-num">05</span>
+        <h2><em>Cookies</em></h2>
+      </div>
+      <div class="prose">
+        <p>Le site pyrotracksystem.com n'utilise pas de cookies de traçage ou publicitaires. Aucun cookie tiers n'est déposé par le site lui-même.</p>
+        <p>Les services tiers intégrés (Formspree, Google Forms) peuvent déposer leurs propres cookies lors de leur utilisation, conformément à leurs politiques respectives.</p>
+      </div>
+    </div>
+
+    <!-- 06 RESPONSABILITÉ -->
+    <div class="section" id="responsabilite">
+      <div class="section-header">
+        <span class="section-num">06</span>
+        <h2><em>Responsabilité</em></h2>
+      </div>
+      <div class="prose">
+        <p>Les informations présentes sur ce site sont fournies à titre indicatif. Yann BLOUIN s'efforce de maintenir le site accessible et à jour, mais ne peut garantir l'exactitude, la complétude ou l'actualité des informations diffusées.</p>
+        <p>Le logiciel PyroTrack System est fourni tel quel dans sa version bêta actuelle. L'utilisateur reconnaît l'utiliser sous sa propre responsabilité, en particulier dans le cadre de toute utilisation liée à des effets pyrotechniques ou scéniques.</p>
+        <p>Yann BLOUIN ne saurait être tenu responsable de tout dommage direct ou indirect résultant de l'utilisation du site ou du logiciel.</p>
+      </div>
+    </div>
+
+    <!-- 07 LOI APPLICABLE -->
+    <div class="section" id="loi">
+      <div class="section-header">
+        <span class="section-num">07</span>
+        <h2>Loi <em>applicable</em></h2>
+      </div>
+      <div class="prose">
+        <p>Les présentes mentions légales sont soumises au droit français. En cas de litige, et à défaut de résolution amiable, les tribunaux français seront seuls compétents.</p>
+        <p>Dernière mise à jour : juin 2026</p>
+      </div>
+    </div>
+
+  </div>
+
+<div id="footer-placeholder"></div>
+
+<script src="/js/i18n.js"></script>
+<script src="/js/components.js"></script>
+
+</body>
+</html>

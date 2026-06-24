@@ -906,7 +906,24 @@ main {
       color: var(--text3);
       text-transform: uppercase;
     }
+.footer-link {
+      background: transparent;
+      border: none;
+      color: var(--text2);
+      font-family: var(--font-ui);
+      font-size: 0.85rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 0.2rem 1rem;
+      cursor: pointer;
+      transition: color 0.2s, background 0.2s;
+      white-space: nowrap;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
+    .footer-link:hover { color: var(--light)}
     /* ═══════════════════════════════════════════════
        ANIMATIONS ENTRÉE
        ═══════════════════════════════════════════════ */

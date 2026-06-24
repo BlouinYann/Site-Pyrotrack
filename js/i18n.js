@@ -97,7 +97,12 @@ const I18N = {
     nav_about:    'About',
     nav_features: 'Features',
     nav_contact:  'Contact',
-    nav_download: 'Download'
+    nav_download: 'Download',
+    /* Footer */
+    footer_mentions: 'Legal Notice',
+    footer_cgu:      'Terms of Use',
+    footer_cgv:      'Sales Terms',
+    footer_right:   '© 2026 PyroTrack System. All rights reserved.'
   } 
 };
 

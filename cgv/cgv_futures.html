@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+<link rel="icon" type="image/png" href="/images/icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/icon.png">
+  <link rel="apple-touch-icon" href="/images/icon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />  <title>Conditions Générales de Vente — PyroTrack System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;900&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0a;
+      --surface: #111111;
+      --border: #222222;
+      --red: #CC1111;
+      --red-dim: #8a0b0b;
+      --text: #e0e0e0;
+      --muted: #888888;
+      --white: #ffffff;
+      --warn-bg: #1a0a0a;
+      --warn-border: #CC1111;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2.5rem;
+      height: 56px;
+    }
+
+    .nav-logo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 1.2rem;
+      letter-spacing: 0.08em;
+      color: var(--white);
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .nav-logo span { color: var(--red); }
+
+    .nav-back {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-back:hover { color: var(--red); }
+
+    /* HERO */
+    .hero {
+      margin-top: 56px;
+      padding: 5rem 2.5rem 3rem;
+      border-bottom: 1px solid var(--border);
+      max-width: 860px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: clamp(2.8rem, 6vw, 4.5rem);
+      line-height: 1;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--red);
+    }
+
+    .hero-sub {
+      color: var(--muted);
+      font-size: 0.9rem;
+      max-width: 560px;
+    }
+
+    /* CONTENT */
+    .content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 2.5rem 6rem;
+    }
+
+    /* SECTION */
+    .section {
+      border-top: 1px solid var(--border);
+      padding: 3rem 0;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 1.2rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .section-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      color: var(--red-dim);
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
+
+    .section h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 1.5rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--white);
+    }
+
+    .section h2 em {
+      font-style: normal;
+      color: var(--red);
+    }
+
+    /* CARD */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 1.5rem 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .card-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .card-value {
+      color: var(--text);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .card-value strong { color: var(--white); font-weight: 500; }
+    .card-value a { color: var(--red); text-decoration: none; }
+    .card-value a:hover { text-decoration: underline; }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    @media (max-width: 600px) {
+      .grid-2 { grid-template-columns: 1fr; }
+      nav { padding: 0 1.2rem; }
+      .hero, .content { padding-left: 1.2rem; padding-right: 1.2rem; }
+    }
+
+    /* PROSE */
+    .prose p {
+      color: var(--text);
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+    }
+
+    .prose p:last-child { margin-bottom: 0; }
+    .prose a { color: var(--red); text-decoration: none; }
+    .prose a:hover { text-decoration: underline; }
+
+    /* ALERTE / AVERTISSEMENT */
+    .alert {
+      background: var(--warn-bg);
+      border-left: 4px solid var(--red);
+      padding: 1.2rem 1.6rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .alert-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 0.5rem;
+    }
+
+    .alert p {
+      color: var(--text);
+      font-size: 0.92rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* BADGE */
+    .badge {
+      display: inline-block;
+      background: var(--red-dim);
+      color: var(--white);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.15em 0.6em;
+      margin-left: 0.5rem;
+      vertical-align: middle;
+    }
+
+    .badge-outline {
+      background: transparent;
+      border: 1px solid var(--red-dim);
+      color: var(--red);
+    }
+
+    /* TABLE DES MATIÈRES */
+    .toc {
+      background: var(--surface);
+      border-left: 3px solid var(--red);
+      padding: 1.5rem 2rem;
+    }
+
+    .toc-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .toc ol {
+      list-style: none;
+      counter-reset: toc;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.3rem 2rem;
+    }
+
+    @media (max-width: 600px) { .toc ol { grid-template-columns: 1fr; } }
+
+    .toc li {
+      counter-increment: toc;
+      font-size: 0.85rem;
+    }
+
+    .toc li::before {
+      content: "0" counter(toc) " —";
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      color: var(--red-dim);
+      margin-right: 0.4rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+    }
+
+    .toc a {
+      color: var(--text);
+      text-decoration: none;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .toc a:hover { color: var(--red); }
+
+    /* LISTE */
+    .prose ul {
+      margin: 0.5rem 0 1rem 0;
+      padding-left: 1.2rem;
+    }
+
+    .prose ul li {
+      font-size: 0.95rem;
+      color: var(--text);
+      margin-bottom: 0.3rem;
+      padding-left: 0.4rem;
+    }
+
+    .prose ul li::marker { color: var(--red); }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 2.5rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+
+    footer a { color: var(--red); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+  <div id="header-placeholder"></div>
+
+
+  <div class="hero">
+    <p class="hero-label">Achat de licences</p>
+    <h1>Conditions Générales <em>de Vente</em></h1>
+    <p class="hero-sub">Les CGV seront publiées lors du lancement de la version sous licence de PyroTrack System. Pour toute question : <a href="mailto:pyrotracksystem@gmail.com" style="color:var(--red)">pyrotracksystem@gmail.com</a></p>
+  </div>
+
+  <div class="content">
+
+    <!-- SOMMAIRE -->
+    <div class="section" style="padding-top:2rem">
+      <div class="toc">
+        <p class="toc-title">Sommaire — à venir</p>
+        <ol>
+          <li><a href="#objet">Objet</a></li>
+          <li><a href="#produits">Produits & tarifs</a></li>
+          <li><a href="#commande">Commande & paiement</a></li>
+          <li><a href="#livraison">Livraison de la licence</a></li>
+          <li><a href="#retractation">Droit de rétractation</a></li>
+          <li><a href="#remboursement">Remboursements</a></li>
+          <li><a href="#resiliation">Résiliation</a></li>
+          <li><a href="#responsabilite">Limitation de responsabilité</a></li>
+          <li><a href="#donnees">Données & facturation</a></li>
+          <li><a href="#litiges">Litiges & médiation</a></li>
+          <li><a href="#loi">Loi applicable</a></li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- BANNIÈRE À VENIR -->
+    <div class="section" style="padding-top:2rem; padding-bottom:2rem">
+      <div class="alert">
+        <p class="alert-label">⏳ Page en cours de rédaction</p>
+        <p>Les Conditions Générales de Vente de PyroTrack System seront publiées lors du lancement de la version sous licence payante, actuellement en développement. Les sections ci-dessous sont des espaces réservés qui seront complétés avant toute ouverture commerciale.</p>
+      </div>
+    </div>
+
+    <!-- 01 OBJET -->
+    <div class="section" id="objet">
+      <div class="section-header">
+        <span class="section-num">01</span>
+        <h2><em>Objet</em></h2>
+      </div>
+      <div class="card">
+        <p class="card-title">À compléter</p>
+        <p class="card-value">Cette section précisera l'objet des présentes CGV, les parties concernées (Yann BLOUIN / acheteur) et le champ d'application.</p>
+      </div>
+    </div>
+
+    <!-- 02 PRODUITS & TARIFS -->
+    <div class="section" id="produits">
+      <div class="section-header">
+        <span class="section-num">02</span>
+        <h2>Produits & <em>tarifs</em></h2>
+      </div>
+      <div class="card">
+        <p class="card-title">À compléter</p>
+        <p class="card-value">Description des formules de licence disponibles, tarifs TTC, devise (EUR), TVA applicable. Distinction abonnement / achat définitif le cas échéant.</p>
+      </div>
+    </div>
+
+    <!-- 03 COMMANDE & PAIEMENT -->
+    <div class="section" id="commande">
+      <div class="section-header">
+        <span class="section-num">03</span>
+        <h2>Commande & <em>paiement</em></h2>
+      </div>
+      <div class="card">
+        <p class="card-title">À compléter</p>
+        <p class="card-value">Processus de commande, moyens de paiement acceptés, prestataire de paiement, sécurité des transactions.</p>
+      </div>
+    </div>
+
+    <!-- 04 LIVRAISON -->
+    <div class="section" id="livraison">
+      <div class="section-header">
+        <span class="section-num">04</span>
+        <h2>Livraison de la <em>licence</em></h2>
+      </div>
+      <div class="card">
+        <p class="card-title">À compléter</p>
+        <p class="card-value">Modalités de délivrance de la clé de licence (email, espace client), délai, procédure d'activation, nombre de postes autorisés.</p>
+      </div>
+    </div>
+
+    <!-- 05 RÉTRACTATION -->
+    <div class="section" id="retractation">
+      <div class="section-header">
+        <span class="section-num">05</span>
+        <h2>Droit de <em>rétractation</em></h2>
+      </div>
+      <div class="card">
+        <p class="card-title">À compléter</p>
+        <p class="card-value">Conformément à la directive EU 2011/83/UE et au Code de la consommation français, conditions du droit de rétractation de 14 jours. Précision sur l'éventuelle exemption en cas de téléchargement et activation immédiate avec consentement explicite de l'acheteur.</p>
+      </div>
+    </div>
+
+    <!-- 06 REMBOURSEMENTS -->
+    <div class="section" id="remboursement">
+      <div class="section-header">
+        <span class="section-num">06</span>
+        <h2><em>Remboursements</em></h2>
+      </div>
+      <div class="card">
+        <p class="card-title">À compléter</p>
+        <p class="card-value">Conditions et délais de remboursement, cas éligibles, procédure à suivre.</p>
+      </div>
+    </div>
+
+    <!-- 07 RÉSILIATION -->
+    <div class="section" id="resiliation">
+      <div class="section-header">
+        <span class="section-num">07</span>
+        <h2><em>Résiliation</em></h2>
+      </div>
+      <div class="card">
+        <p class="card-title">À compléter</p>
+        <p class="card-value">Conditions de résiliation à l'initiative de l'acheteur ou de Yann BLOUIN, préavis, conséquences sur l'accès au logiciel, révocation de licence en cas de violation des CGU ou CGV.</p>
+      </div>
+    </div>
+
+    <!-- 08 LIMITATION DE RESPONSABILITÉ -->
+    <div class="section" id="responsabilite">
+      <div class="section-header">
+        <span class="section-num">08</span>
+        <h2>Limitation de <em>responsabilité</em></h2>
+      </div>
+      <div class="card">
+        <p class="card-title">À compléter</p>
+        <p class="card-value">Reprise et adaptation des clauses de non-responsabilité des CGU, applicables dans le cadre commercial. Le logiciel reste fourni sans garantie de résultat, notamment concernant les estimations de consommation basées sur des données constructeur.</p>
+      </div>
+    </div>
+
+    <!-- 09 DONNÉES & FACTURATION -->
+    <div class="section" id="donnees">
+      <div class="section-header">
+        <span class="section-num">09</span>
+        <h2>Données & <em>facturation</em></h2>
+      </div>
+      <div class="card">
+        <p class="card-title">À compléter</p>
+        <p class="card-value">Données collectées lors de l'achat (nom, email, adresse de facturation), conservation des factures (10 ans, obligation légale FR), droits RGPD de l'acheteur.</p>
+      </div>
+    </div>
+
+    <!-- 10 LITIGES & MÉDIATION -->
+    <div class="section" id="litiges">
+      <div class="section-header">
+        <span class="section-num">10</span>
+        <h2>Litiges & <em>médiation</em></h2>
+      </div>
+      <div class="card">
+        <p class="card-title">À compléter</p>
+        <p class="card-value">Conformément à l'obligation légale pour les ventes B2C en UE, désignation d'un médiateur de la consommation. Plateforme de règlement en ligne des litiges (RLL) de la Commission Européenne.</p>
+      </div>
+    </div>
+
+    <!-- 11 LOI APPLICABLE -->
+    <div class="section" id="loi">
+      <div class="section-header">
+        <span class="section-num">11</span>
+        <h2>Loi <em>applicable</em></h2>
+      </div>
+      <div class="prose">
+        <p>Les présentes CGV seront soumises au droit français. En cas de litige et à défaut de résolution amiable, les tribunaux français seront compétents, sans préjudice des dispositions protectrices applicables aux consommateurs résidant dans un autre État membre de l'Union Européenne.</p>
+        <p>Pour toute question : <a href="mailto:pyrotracksystem@gmail.com">pyrotracksystem@gmail.com</a></p>
+      </div>
+    </div>
+
+  </div>
+
+  <div id="footer-placeholder"></div>
+
+<script src="/js/i18n.js"></script>
+<script src="/js/components.js"></script>
+
+</body>
+</html>

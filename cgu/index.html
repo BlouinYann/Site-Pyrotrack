@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+<link rel="icon" type="image/png" href="/images/icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/icon.png">
+  <link rel="apple-touch-icon" href="/images/icon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />  <title>Conditions Générales d'Utilisation — PyroTrack System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;900&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0a;
+      --surface: #111111;
+      --border: #222222;
+      --red: #CC1111;
+      --red-dim: #8a0b0b;
+      --text: #e0e0e0;
+      --muted: #888888;
+      --white: #ffffff;
+      --warn-bg: #1a0a0a;
+      --warn-border: #CC1111;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2.5rem;
+      height: 56px;
+    }
+
+    .nav-logo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 1.2rem;
+      letter-spacing: 0.08em;
+      color: var(--white);
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .nav-logo span { color: var(--red); }
+
+    .nav-back {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-back:hover { color: var(--red); }
+
+    /* HERO */
+    .hero {
+      margin-top: 56px;
+      padding: 5rem 2.5rem 3rem;
+      border-bottom: 1px solid var(--border);
+      max-width: 860px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: clamp(2.8rem, 6vw, 4.5rem);
+      line-height: 1;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--red);
+    }
+
+    .hero-sub {
+      color: var(--muted);
+      font-size: 0.9rem;
+      max-width: 560px;
+    }
+
+    /* CONTENT */
+    .content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 2.5rem 6rem;
+    }
+
+    /* SECTION */
+    .section {
+      border-top: 1px solid var(--border);
+      padding: 3rem 0;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 1.2rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .section-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      color: var(--red-dim);
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
+
+    .section h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 1.5rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--white);
+    }
+
+    .section h2 em {
+      font-style: normal;
+      color: var(--red);
+    }
+
+    /* CARD */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 1.5rem 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .card-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .card-value {
+      color: var(--text);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .card-value strong { color: var(--white); font-weight: 500; }
+    .card-value a { color: var(--red); text-decoration: none; }
+    .card-value a:hover { text-decoration: underline; }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    @media (max-width: 600px) {
+      .grid-2 { grid-template-columns: 1fr; }
+      nav { padding: 0 1.2rem; }
+      .hero, .content { padding-left: 1.2rem; padding-right: 1.2rem; }
+    }
+
+    /* PROSE */
+    .prose p {
+      color: var(--text);
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+    }
+
+    .prose p:last-child { margin-bottom: 0; }
+    .prose a { color: var(--red); text-decoration: none; }
+    .prose a:hover { text-decoration: underline; }
+
+    /* ALERTE / AVERTISSEMENT */
+    .alert {
+      background: var(--warn-bg);
+      border-left: 4px solid var(--red);
+      padding: 1.2rem 1.6rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .alert-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 0.5rem;
+    }
+
+    .alert p {
+      color: var(--text);
+      font-size: 0.92rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* BADGE */
+    .badge {
+      display: inline-block;
+      background: var(--red-dim);
+      color: var(--white);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.15em 0.6em;
+      margin-left: 0.5rem;
+      vertical-align: middle;
+    }
+
+    .badge-outline {
+      background: transparent;
+      border: 1px solid var(--red-dim);
+      color: var(--red);
+    }
+
+    /* TABLE DES MATIÈRES */
+    .toc {
+      background: var(--surface);
+      border-left: 3px solid var(--red);
+      padding: 1.5rem 2rem;
+    }
+
+    .toc-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .toc ol {
+      list-style: none;
+      counter-reset: toc;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.3rem 2rem;
+    }
+
+    @media (max-width: 600px) { .toc ol { grid-template-columns: 1fr; } }
+
+    .toc li {
+      counter-increment: toc;
+      font-size: 0.85rem;
+    }
+
+    .toc li::before {
+      content: "0" counter(toc) " —";
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      color: var(--red-dim);
+      margin-right: 0.4rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+    }
+
+    .toc a {
+      color: var(--text);
+      text-decoration: none;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .toc a:hover { color: var(--red); }
+
+    /* LISTE */
+    .prose ul {
+      margin: 0.5rem 0 1rem 0;
+      padding-left: 1.2rem;
+    }
+
+    .prose ul li {
+      font-size: 0.95rem;
+      color: var(--text);
+      margin-bottom: 0.3rem;
+      padding-left: 0.4rem;
+    }
+
+    .prose ul li::marker { color: var(--red); }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 2.5rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+
+    footer a { color: var(--red); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+  <div id="header-placeholder"></div>
+
+
+  <div class="hero">
+    <p class="hero-label">Utilisation du site et du logiciel</p>
+    <h1>Conditions Générales <em>d'Utilisation</em></h1>
+    <p class="hero-sub">En téléchargeant ou en utilisant PyroTrack System, vous acceptez les présentes conditions. Dernière mise à jour : juin 2026.</p>
+  </div>
+
+  <div class="content">
+
+    <!-- SOMMAIRE -->
+    <div class="section" style="padding-top:2rem">
+      <div class="toc">
+        <p class="toc-title">Sommaire</p>
+        <ol>
+          <li><a href="#objet">Objet</a></li>
+          <li><a href="#acces">Accès au logiciel</a></li>
+          <li><a href="#donnees-constructeur">Données constructeur</a></li>
+          <li><a href="#responsabilite">Limitation de responsabilité</a></li>
+          <li><a href="#licence">Licences & versions payantes</a></li>
+          <li><a href="#proprieté">Propriété intellectuelle</a></li>
+          <li><a href="#territoire">Territoire & langue</a></li>
+          <li><a href="#modifications">Modifications des CGU</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- 01 OBJET -->
+    <div class="section" id="objet">
+      <div class="section-header">
+        <span class="section-num">01</span>
+        <h2><em>Objet</em></h2>
+      </div>
+      <div class="prose">
+        <p>Les présentes Conditions Générales d'Utilisation (CGU) régissent l'accès et l'utilisation du logiciel <strong>PyroTrack System</strong> (ci-après « le Logiciel ») ainsi que du site web <strong>pyrotracksystem.com</strong> (ci-après « le Site »), édités par Yann BLOUIN.</p>
+        <p>L'utilisation du Logiciel ou du Site vaut acceptation pleine et entière des présentes CGU. Si vous n'acceptez pas ces conditions, vous devez cesser toute utilisation du Logiciel et du Site.</p>
+      </div>
+    </div>
+
+    <!-- 02 ACCÈS AU LOGICIEL -->
+    <div class="section" id="acces">
+      <div class="section-header">
+        <span class="section-num">02</span>
+        <h2>Accès au <em>logiciel</em></h2>
+      </div>
+
+      <div class="grid-2" style="margin-bottom:1rem">
+        <div class="card">
+          <p class="card-title">Version bêta gratuite <span class="badge">Disponible</span></p>
+          <p class="card-value">
+            Accessible à tous sans inscription ni licence. Fonctionnalités limitées :<br><br>
+            — Patch limité à <strong>10 fixtures</strong><br>
+            — Calcul de consommation limité à <strong>20 minutes</strong><br>
+            — Export PDF <strong>désactivé</strong>
+          </p>
+        </div>
+        <div class="card">
+          <p class="card-title">Version complète <span class="badge badge-outline">À venir</span></p>
+          <p class="card-value">
+            Soumise à l'obtention d'une licence payante. Les conditions spécifiques sont détaillées à l'article 05 des présentes CGU.
+          </p>
+        </div>
+      </div>
+
+      <div class="prose">
+        <p>La version bêta est fournie à titre expérimental. Elle peut contenir des bugs, être modifiée ou interrompue à tout moment sans préavis. L'utilisation en environnement de production réel reste à la discrétion et sous l'entière responsabilité de l'utilisateur.</p>
+      </div>
+    </div>
+
+    <!-- 03 DONNÉES CONSTRUCTEUR -->
+    <div class="section" id="donnees-constructeur">
+      <div class="section-header">
+        <span class="section-num">03</span>
+        <h2>Données <em>constructeur</em></h2>
+      </div>
+
+      <div class="alert">
+        <p class="alert-label">⚠ Avertissement important</p>
+        <p>Les calculs de consommation effectués par PyroTrack System sont basés sur des données théoriques issues des fiches techniques des fabricants de produits pyrotechniques et d'effets spéciaux scéniques. Ces données sont fournies à titre indicatif uniquement.</p>
+      </div>
+
+      <div class="prose">
+        <p>Les résultats affichés par le Logiciel — volumes consommés, stocks restants, durées de session, rapports PDF — sont des <strong>estimations calculées</strong> à partir de débits et paramètres théoriques fournis par les constructeurs. Ils ne constituent en aucun cas une mesure physique réelle des consommations effectives.</p>
+        <p>De nombreux facteurs peuvent entraîner un écart entre les données affichées et la réalité :</p>
+        <ul>
+          <li>Variations de pression ou de température des produits</li>
+          <li>État d'usure ou de maintenance des équipements</li>
+          <li>Conditions d'utilisation spécifiques à chaque installation</li>
+          <li>Écarts entre lots de fabrication</li>
+          <li>Latences ou erreurs de la chaîne DMX</li>
+        </ul>
+        <p>L'utilisateur est seul responsable de la vérification physique des niveaux de consommation et de stock avant, pendant et après toute utilisation en conditions réelles. PyroTrack System est un <strong>outil d'aide à la gestion</strong> et ne se substitue en aucun cas aux procédures de sécurité et aux obligations réglementaires applicables à l'usage de produits pyrotechniques.</p>
+      </div>
+    </div>
+
+    <!-- 04 LIMITATION DE RESPONSABILITÉ -->
+    <div class="section" id="responsabilite">
+      <div class="section-header">
+        <span class="section-num">04</span>
+        <h2>Limitation de <em>responsabilité</em></h2>
+      </div>
+
+      <div class="alert" style="margin-bottom:1.5rem">
+        <p class="alert-label">Clause de non-responsabilité</p>
+        <p>Le Logiciel est fourni « en l'état » (as-is), sans garantie d'aucune sorte, expresse ou implicite, y compris toute garantie de fonctionnement continu, d'absence d'erreur ou d'adéquation à un usage particulier.</p>
+      </div>
+
+      <div class="prose">
+        <p>Yann BLOUIN ne pourra en aucun cas être tenu responsable de :</p>
+        <ul>
+          <li>Tout dommage direct ou indirect résultant de l'utilisation ou de l'impossibilité d'utiliser le Logiciel</li>
+          <li>Toute perte de données, corruption de fichier de projet ou échec de génération de rapport</li>
+          <li>Tout incident, accident ou préjudice survenu lors d'un spectacle ou d'une production utilisant le Logiciel</li>
+          <li>Tout écart entre les consommations estimées par le Logiciel et les consommations réelles constatées</li>
+          <li>Toute interruption de service, bug ou dysfonctionnement du Logiciel ou du Site</li>
+          <li>Tout dommage causé par une installation incorrecte, une mauvaise configuration ou une utilisation non conforme aux instructions</li>
+        </ul>
+        <p>Cette limitation s'applique quelle que soit la nature de la responsabilité invoquée (contractuelle, délictuelle ou autre) et même si Yann BLOUIN a été averti de la possibilité de tels dommages.</p>
+        <p>L'utilisateur reconnaît utiliser PyroTrack System en connaissance de cause et sous sa seule responsabilité, notamment dans tout contexte professionnel impliquant des effets pyrotechniques ou scéniques.</p>
+      </div>
+    </div>
+
+    <!-- 05 LICENCES -->
+    <div class="section" id="licence">
+      <div class="section-header">
+        <span class="section-num">05</span>
+        <h2>Licences & versions <em>payantes</em></h2>
+      </div>
+
+      <div class="card" style="margin-bottom:1.5rem">
+        <p class="card-title">Statut actuel</p>
+        <p class="card-value">Le système de licences payantes est en cours de développement et n'est pas encore disponible au public. Les conditions tarifaires et les fonctionnalités débloquées seront précisées lors du lancement de la version commerciale.</p>
+      </div>
+
+      <div class="prose">
+        <p>Lorsque le système de licences sera disponible, les conditions suivantes s'appliqueront :</p>
+
+        <p><strong style="color:var(--white)">Octroi de licence</strong><br>
+        L'achat d'une licence PyroTrack System confère à l'utilisateur un droit d'utilisation personnel, non exclusif et non transférable du Logiciel. La licence est nominative et liée à un nombre défini de postes selon la formule souscrite.</p>
+
+        <p><strong style="color:var(--white)">Interdictions</strong><br>
+        Il est strictement interdit de revendre, sous-licencier, partager, louer ou transférer une licence à un tiers sans autorisation écrite préalable. Tout contournement du système de protection des licences (activation, vérification) est également interdit.</p>
+
+        <p><strong style="color:var(--white)">Durée et résiliation</strong><br>
+        Les licences seront proposées selon des modalités (abonnement ou achat définitif) précisées lors du lancement. En cas de violation des présentes CGU, Yann BLOUIN se réserve le droit de révoquer la licence sans remboursement.</p>
+
+        <p><strong style="color:var(--white)">Remboursements</strong><br>
+        Les conditions de remboursement seront définies et publiées lors de l'ouverture des ventes. Elles respecteront les dispositions du Code de la consommation applicables en Union Européenne.</p>
+      </div>
+    </div>
+
+    <!-- 06 PROPRIÉTÉ INTELLECTUELLE -->
+    <div class="section" id="propriété">
+      <div class="section-header">
+        <span class="section-num">06</span>
+        <h2>Propriété <em>intellectuelle</em></h2>
+      </div>
+      <div class="prose">
+        <p>L'ensemble des éléments constituant le Logiciel et le Site — code source, interface, logo, nom, documentation — sont la propriété exclusive de Yann BLOUIN et sont protégés par le droit d'auteur français et les conventions internationales.</p>
+        <p>Toute reproduction, décompilation, rétro-ingénierie, extraction ou modification non autorisée est strictement interdite. L'utilisateur dispose uniquement du droit d'utiliser le Logiciel dans les conditions définies par les présentes CGU.</p>
+      </div>
+    </div>
+
+    <!-- 07 TERRITOIRE & LANGUE -->
+    <div class="section" id="territoire">
+      <div class="section-header">
+        <span class="section-num">07</span>
+        <h2>Territoire & <em>langue</em></h2>
+      </div>
+      <div class="prose">
+        <p>PyroTrack System est actuellement disponible en langue française uniquement. D'autres langues pourront être ajoutées dans les versions futures.</p>
+        <p>Le Logiciel est distribué et accessible depuis l'ensemble de l'Union Européenne. L'utilisation depuis d'autres territoires est possible mais non officiellement supportée à ce stade. Les présentes CGU sont régies par le droit français.</p>
+      </div>
+    </div>
+
+    <!-- 08 MODIFICATIONS -->
+    <div class="section" id="modifications">
+      <div class="section-header">
+        <span class="section-num">08</span>
+        <h2><em>Modifications</em> des CGU</h2>
+      </div>
+      <div class="prose">
+        <p>Yann BLOUIN se réserve le droit de modifier les présentes CGU à tout moment, notamment lors de l'évolution du Logiciel ou du lancement de la version payante. Les modifications entrent en vigueur dès leur publication sur le Site.</p>
+        <p>Il appartient à l'utilisateur de consulter régulièrement les CGU. La poursuite de l'utilisation du Logiciel ou du Site après modification vaut acceptation des nouvelles conditions.</p>
+      </div>
+    </div>
+
+    <!-- 09 CONTACT -->
+    <div class="section" id="contact">
+      <div class="section-header">
+        <span class="section-num">09</span>
+        <h2><em>Contact</em></h2>
+      </div>
+      <div class="prose">
+        <p>Pour toute question relative aux présentes CGU, vous pouvez contacter Yann BLOUIN à l'adresse suivante : <a href="mailto:pyrotracksystem@gmail.com">pyrotracksystem@gmail.com</a></p>
+        <p>Vous pouvez également utiliser le <a href="/contact/">formulaire de contact</a> disponible sur le Site.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div id="footer-placeholder"></div>
+
+<script src="/js/i18n.js"></script>
+<script src="/js/components.js"></script>
+
+</body>
+</html>
