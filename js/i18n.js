@@ -122,7 +122,7 @@ faq_toc_support: 'Support & bugs',
 faq_compat_title: 'Compatibility & technical',
  
 faq_compat_q1: 'Which operating system does PyroTrack System run on?',
-faq_compat_a1: 'PyroTrack System is developed and tested on Windows 11. Since the software is built on Electron, it should also work on Windows 10 in principle. Compatibility with macOS and Linux is not guaranteed at this stage.',
+faq_compat_a1: 'PyroTrack System is developed and tested on Windows 11. The software also work on Windows 10 in principle. Compatibility with macOS and Linux is not guaranteed at this stage.',
  
 faq_compat_q2: 'Which DMX adapters are compatible?',
 faq_compat_a2: 'PyroTrack System is compatible with any DMX adapter that has a DMX input (DMX In). The software also supports receiving the ArtNet and sACN protocols. No specific brand is required.',
