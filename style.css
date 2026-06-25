@@ -49,7 +49,10 @@
        ═══════════════════════════════════════════════ */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    html { scroll-behavior: smooth; }
+    html {
+  scroll-behavior: smooth;
+  overflow-x: hidden; 
+}
 
     html, body {
       height: 100%;
@@ -254,7 +257,8 @@ main {
       position: absolute;
       top: 50%; left: 50%;
       transform: translate(-50%, -55%);
-      width: 800px; height: 600px;
+      width: min(800px, 100vw);
+      height: min(600px, 75vw);
       background: radial-gradient(ellipse at center,
         rgba(204,17,17,0.18) 0%,
         rgba(255,78,26,0.08) 35%,

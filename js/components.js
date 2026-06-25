@@ -43,3 +43,7 @@
   /* -- Footer -- */
   loadComponent('#footer-placeholder', '../footer.html');
 })();
+/* -- Burger mobile -- */
+function toggleMenu() {
+    document.getElementById('navLinks').classList.toggle('open');
+  }
