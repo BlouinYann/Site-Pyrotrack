@@ -259,5 +259,9 @@
 
   reveals.forEach(el => revealObs.observe(el));
 </script>
+<!-- Wake up Render -->
+<script>
+  fetch('https://licence-pyrotrack-gen.onrender.com/latest-version').catch(() => {});
+</script>
 </body>
 </html>
