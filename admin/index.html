@@ -89,7 +89,7 @@
     .btn-login:disabled { background: #555; cursor: not-allowed; }
 
     /* ── Dashboard ── */
-    #dashboard { display: none; padding: 3rem 2rem; max-width: 900px; margin: 0 auto; }
+    #dashboard { display: none; padding: calc(64px + 3rem) 2rem 3rem; max-width: 900px; margin: 0 auto; }
     .dashboard-header {
       display: flex; justify-content: space-between; align-items: center;
       margin-bottom: 2.5rem;
@@ -202,6 +202,7 @@
   </style>
 </head>
 <body>
+  <div id="header-placeholder"></div>
 
 <!-- ── Login ── -->
 <div id="login-overlay">
@@ -247,7 +248,9 @@
     <p class="loading-text">Chargement des données...</p>
   </div>
 </div>
-
+  <div id="footer-placeholder"></div>
+<script src="../js/i18n.js"></script>
+<script src="../js/components.js"></script>
 <script>
   /* ── Hashes SHA-256 (ne pas modifier) ── */
   const USER_HASH = 'd44e1785d8ef83f2d215d50b6e20f94a7d092ddaa6789c7a4731c8d3b6a9b8dc';

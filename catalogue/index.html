@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="/images/icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/icon.png">
+  <link rel="apple-touch-icon" href="/images/icon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Catalogue — PyroTrack System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;900&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body class="legal-page">
+
+<div id="header-placeholder"></div>
+
+  <div class="legal-hero">
+    <p class="hero-label" data-i18n="catalogue_fxok">Effets pris en charge</p>
+    <h1 data-i18n-html="catalogue_title_html">Catalogue <em>Produits</em></h1>
+    <p class="hero-sub" data-i18n="catalogue_hero">Tous les effets spéciaux compatibles avec PyroTrack System — variantes de buses et profils DMX disponibles.</p>
+  </div>
+
+  <div class="legal-content catalogue-content">
+
+    <!-- Contrôles -->
+    <div class="section cat-controls-section" style="padding-top: 2rem; padding-bottom: 1.5rem;">
+
+      <div class="cat-search-wrap">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <input id="search-input" type="text"
+               placeholder="Rechercher par nom ou marque…"
+               data-i18n-attr="placeholder:catalogue_search_placeholder"
+               autocomplete="off" spellcheck="false" />
+        <button id="search-clear" data-i18n="catalogue_clear" title="Effacer">✕</button>
+      </div>
+
+      <div class="cat-controls-row">
+        <div class="cat-filter-bar" id="filter-bar">
+          <button class="cat-filter-btn active" data-cat="all" data-i18n="catalogue_all">Tous</button>
+        </div>
+        <div class="cat-view-toggle">
+          <button class="cat-view-btn active" id="btn-grid" title="Vue grille">
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor">
+              <rect x="0" y="0" width="6" height="6" rx="1"/>
+              <rect x="10" y="0" width="6" height="6" rx="1"/>
+              <rect x="0" y="10" width="6" height="6" rx="1"/>
+              <rect x="10" y="10" width="6" height="6" rx="1"/>
+            </svg>
+          </button>
+          <button class="cat-view-btn" id="btn-list" title="Vue liste">
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor">
+              <rect x="0" y="0" width="16" height="3" rx="1"/>
+              <rect x="0" y="6" width="16" height="3" rx="1"/>
+              <rect x="0" y="12" width="16" height="3" rx="1"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Grille produits -->
+    <div class="section" style="padding-top: 0; border-top: none;">
+      <div id="catalogue-grid" class="cat-grid">
+        <div class="cat-status" id="catalogue-loading">Chargement du catalogue…</div>
+      </div>
+      <p id="catalogue-count" class="cat-count"></p>
+    </div>
+    
+    <p class="hero-sub" data-i18n="catalogue_missing">Il vous manque un produit ? Faites une demande d'ajout sur le formulaire ci dessous !</p>
+
+    <div style="display: flex; justify-content: center; padding: 20px;">
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdAqW6OEsqVdJDd969dTSOmh3-63JIYPkk7kznsBSVzePBx7A/viewform?embedded=true" width="640" height="721" frameborder="0" marginheight="0" marginwidth="0" data-i18n="ct_iframe_loading">Chargement…</iframe>
+  </div>
+  </div>
+
+<div id="footer-placeholder"></div>
+
+<script src="../js/i18n.js"></script>
+<script src="../js/components.js"></script>
+<script>
+  /* Retourne la traduction d'une clé si la langue EN est active, sinon le fallback FR */
+  function t(key, fallback) {
+    const lang = document.cookie.match('(^|;)\\s*pts_lang\\s*=\\s*([^;]+)')?.[2] || 'fr';
+    return (lang === 'en' && window.I18N?.en?.[key]) ? window.I18N.en[key] : fallback;
+  }
+
+  const CAT_LABELS_FR = {
+    Flame: 'Flamme', Spark: 'Étincelles', Co2: 'CO²',
+    Smoke: 'Fumée',  Bubble: 'Bulles',    Confetti: 'Confetti',
+  };
+  const CAT_I18N_KEYS = {
+    Flame: 'catalogue_cat_flame', Spark: 'catalogue_cat_spark', Co2: 'catalogue_cat_co2',
+    Smoke: 'catalogue_cat_smoke', Bubble: 'catalogue_cat_bubble', Confetti: 'catalogue_cat_confetti',
+  };
+  const catLabel = c => t(CAT_I18N_KEYS[c], CAT_LABELS_FR[c] ?? c);
+
+  let allGroups  = [];
+  let activeCat  = 'all';
+  let searchTerm = '';
+
+  function parseXML(xml) {
+    const products = Array.from(xml.querySelectorAll('product'))
+      .filter(p => p.getAttribute('hidden') !== 'true');
+    const map = new Map();
+    for (const p of products) {
+      const vg  = p.getAttribute('variantGroup');
+      const dpg = p.getAttribute('dmxProfileGroup');
+      const key = vg ?? dpg ?? p.getAttribute('name');
+      if (!map.has(key)) {
+        map.set(key, {
+          key,
+          name:         key,
+          manufacturer: p.getAttribute('manufacturer') ?? '',
+          cats:         (p.getAttribute('category') ?? '').split(',').map(c => c.trim()).filter(Boolean),
+          variants:     new Set(),
+          dmxProfiles:  new Set(),
+        });
+      }
+      const g  = map.get(key);
+      const vl = p.getAttribute('variantLabel');
+      const dl = p.getAttribute('dmxProfileLabel');
+      if (vl) g.variants.add(vl);
+      if (dl) g.dmxProfiles.add(dl);
+    }
+    return [...map.values()].map(g => ({
+      ...g, variants: [...g.variants], dmxProfiles: [...g.dmxProfiles],
+    }));
+  }
+
+  function buildFilters(groups) {
+    const CAT_ORDER = ['Flame','Spark','Co2','Smoke','Bubble','Confetti'];
+    const present   = new Set(groups.flatMap(g => g.cats));
+    const sorted    = [...CAT_ORDER.filter(c => present.has(c)),
+                       ...[...present].filter(c => !CAT_ORDER.includes(c))];
+    const bar = document.getElementById('filter-bar');
+    for (const cat of sorted) {
+      const btn = document.createElement('button');
+      btn.className   = 'cat-filter-btn';
+      btn.dataset.cat = cat;
+      btn.textContent = catLabel(cat);
+      bar.appendChild(btn);
+    }
+    bar.addEventListener('click', e => {
+      const btn = e.target.closest('.cat-filter-btn');
+      if (!btn) return;
+      document.querySelectorAll('.cat-filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeCat = btn.dataset.cat;
+      render();
+    });
+  }
+
+  function esc(s) {
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+  function highlight(text, term) {
+    if (!term) return esc(text);
+    return esc(text).replace(
+      new RegExp(`(${term.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')})`, 'gi'),
+      '<mark>$1</mark>'
+    );
+  }
+
+  function render() {
+    const term    = searchTerm.trim().toLowerCase();
+    const visible = allGroups.filter(g => {
+      const catOk    = activeCat === 'all' || g.cats.includes(activeCat);
+      const searchOk = !term ||
+        g.name.toLowerCase().includes(term) ||
+        g.manufacturer.toLowerCase().includes(term);
+      return catOk && searchOk;
+    });
+
+    const grid = document.getElementById('catalogue-grid');
+    grid.innerHTML = '';
+
+    if (visible.length === 0) {
+      grid.innerHTML = `<div class="cat-empty">
+        <strong>${t('catalogue_no_result_title', 'Aucun résultat')}</strong>
+        ${t('catalogue_no_result_sub', 'Essayez un autre terme ou réinitialisez les filtres.')}
+      </div>`;
+      document.getElementById('catalogue-count').textContent = '';
+      return;
+    }
+
+    const lang = document.cookie.match('(^|;)\\s*pts_lang\\s*=\\s*([^;]+)')?.[2] || 'fr';
+    const rowLabels = {
+      type:    lang === 'en' ? 'Type'    : 'Type',
+      nozzle:  lang === 'en' ? 'Nozzle'  : 'Buse',
+      variant: lang === 'en' ? 'Variant' : 'Variante',
+      dmx:     'DMX',
+    };
+
+    for (const g of visible) {
+      const card = document.createElement('div');
+      card.className = 'cat-card';
+      card.innerHTML = `
+        <div class="cat-card-header">
+          <div class="cat-card-name">${highlight(g.name, term)}</div>
+          ${g.manufacturer ? `<div class="cat-card-mfr">${highlight(g.manufacturer, term)}</div>` : ''}
+        </div>
+        <div class="cat-card-rows">
+          ${g.cats.length ? `
+          <div class="cat-row">
+            <span class="cat-row-label">${rowLabels.type}</span>
+            <div class="cat-row-tags">${g.cats.map(c => `<span class="cat-tag cat-tag--type">${esc(catLabel(c))}</span>`).join('')}</div>
+          </div>` : ''}
+          ${g.variants.length ? `
+          <div class="cat-row">
+            <span class="cat-row-label">${rowLabels.nozzle}</span>
+            <div class="cat-row-tags">${g.variants.map(v => `<span class="cat-tag cat-tag--variant">${esc(v)}</span>`).join('')}</div>
+          </div>` : ''}
+          ${g.dmxProfiles.length ? `
+          <div class="cat-row">
+            <span class="cat-row-label">${rowLabels.dmx}</span>
+            <div class="cat-row-tags">${g.dmxProfiles.map(d => `<span class="cat-tag cat-tag--dmx">${esc(d)}</span>`).join('')}</div>
+          </div>` : ''}
+        </div>`;
+      grid.appendChild(card);
+    }
+
+    const totalCat = allGroups.filter(g => activeCat === 'all' || g.cats.includes(activeCat)).length;
+    const countEl  = document.getElementById('catalogue-count');
+    if (lang === 'en') {
+      countEl.textContent = term
+        ? `${visible.length} result${visible.length > 1 ? 's' : ''} · ${totalCat} product${totalCat > 1 ? 's' : ''} total`
+        : `${visible.length} product${visible.length > 1 ? 's' : ''}`;
+    } else {
+      countEl.textContent = term
+        ? `${visible.length} résultat${visible.length > 1 ? 's' : ''} · ${totalCat} produits au total`
+        : `${visible.length} produit${visible.length > 1 ? 's' : ''}`;
+    }
+  }
+
+  /* Recherche */
+  const searchInput = document.getElementById('search-input');
+  const searchClear = document.getElementById('search-clear');
+  searchInput.addEventListener('input', () => {
+    searchTerm = searchInput.value;
+    searchClear.style.display = searchTerm ? 'block' : 'none';
+    render();
+  });
+  searchClear.addEventListener('click', () => {
+    searchInput.value = '';
+    searchTerm = '';
+    searchClear.style.display = 'none';
+    searchInput.focus();
+    render();
+  });
+
+  /* Toggle vue */
+  const gridEl  = document.getElementById('catalogue-grid');
+  const btnGrid = document.getElementById('btn-grid');
+  const btnList = document.getElementById('btn-list');
+  btnGrid.addEventListener('click', () => {
+    gridEl.classList.remove('cat-grid--list');
+    btnGrid.classList.add('active'); btnList.classList.remove('active');
+  });
+  btnList.addEventListener('click', () => {
+    gridEl.classList.add('cat-grid--list');
+    btnList.classList.add('active'); btnGrid.classList.remove('active');
+  });
+
+  /* Chargement */
+  async function loadCatalogue() {
+    const loadingEl = document.getElementById('catalogue-loading');
+    if (loadingEl) loadingEl.textContent = t('catalogue_loading', 'Chargement du catalogue…');
+    try {
+      const res = await fetch('/download/catalogue.xml');
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const xml = new DOMParser().parseFromString(await res.text(), 'application/xml');
+      if (xml.querySelector('parsererror')) throw new Error('XML invalide');
+      allGroups = parseXML(xml);
+      buildFilters(allGroups);
+      render();
+    } catch (err) {
+      const errMsg = t('catalogue_loading', 'Impossible de charger le catalogue.');
+      document.getElementById('catalogue-grid').innerHTML =
+        `<div class="cat-status error">Impossible de charger le catalogue.<br><small>${esc(err.message)}</small></div>`;
+    }
+  }
+
+  loadCatalogue();
+</script>
+
+</body>
+</html>

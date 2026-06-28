@@ -61,6 +61,10 @@ const I18N = {
     feat6_desc: 'Configure your COM port, display preferences and arming behaviour to match your hardware.',
     feat6_tag:  'Config',
 
+    feat7_name: 'SFX Library',
+    feat7_tag:  'Library',
+    feat7_desc: 'Browse all compatible effects and DMX profiles. <a href="/catalogue/" class="feat-link">Explore the catalogue →</a>',
+
     download_eyebrow:    '03 — Download',
     download_title_html: 'Beta<br><span class="accent">available.</span>',
     download_sub_html:   'The software is currently available as a free version only.<br>Limited to 10 fixtures, 20 minutes of consumption tracking and PDF exports disabled.',
@@ -97,6 +101,7 @@ const I18N = {
     nav_about:    'About',
     nav_features: 'Features',
     nav_faq:      'Q&A',
+    nav_catalogue:  'Catalog',
     nav_contact:  'Contact',
     nav_download: 'Download',
     /* Footer */
@@ -196,6 +201,25 @@ faq_support_a3: 'No forum or Discord yet. You can follow us on Instagram: "https
 // CTA contact
 faq_cta_text: 'Can\'t find your answer? Contact us directly, we respond to every request.',
 faq_cta_btn: 'Contact us',
+
+
+//CATALOGUE
+catalogue_fxok: 'Supported effects',
+catalogue_hero: 'All special effects compatible with PyroTrack System — nozzle variants and DMX profiles available.',
+catalogue_all: 'All',
+catalogue_clear: 'Clear search',
+catalogue_title_html: 'Product <em>Catalogue</em>',
+catalogue_search_placeholder: 'Search by name or brand…',
+catalogue_loading: 'Loading catalogue…',
+catalogue_no_result_title: 'No results',
+catalogue_no_result_sub: 'Try a different term or reset the filters.',
+catalogue_cat_flame:    'Flame',
+catalogue_cat_spark:    'Sparks',
+catalogue_cat_co2:      'CO²',
+catalogue_cat_smoke:    'Smoke',
+catalogue_cat_bubble:   'Bubbles',
+catalogue_cat_confetti: 'Confetti',
+catalogue_missing: 'Missing a product? Request an addition via the form below.',
   } 
 };
 
