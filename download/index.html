@@ -108,10 +108,23 @@
       const btn = document.getElementById('download-link');
       const lang = (typeof i18nGetCookie === 'function' && i18nGetCookie()) || 'fr';
 
-      btn.href = data.downloadUrl;
+      btn.removeAttribute('href');
+      btn.style.cursor = 'pointer';
       btn.textContent = lang === 'en'
         ? `Download PyroTrack v${data.version}`
         : `Télécharger PyroTrack v${data.version}`;
+
+      btn.addEventListener('click', async (e) => {
+        e.preventDefault();
+        try {
+          await fetch('https://licence-pyrotrack-gen.onrender.com/track-download', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ version: data.version })
+          });
+        } catch (_) {}
+        window.location.href = data.downloadUrl;
+      });
 
       const logLink = document.getElementById('changelog-link');
       logLink.href = `/changelog/${data.version}.html`;
