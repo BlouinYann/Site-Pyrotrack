@@ -62,6 +62,26 @@
       transition: border-color 0.2s;
     }
     .login-field input:focus { border-color: #e63030; }
+
+    /* ── Remember me ── */
+    .login-remember {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      cursor: pointer;
+    }
+    .login-remember input[type="checkbox"] {
+      width: 15px; height: 15px;
+      accent-color: #e63030;
+      cursor: pointer;
+    }
+    .login-remember span {
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.85rem;
+      color: #666;
+      user-select: none;
+    }
+
     .login-error {
       color: #e63030;
       font-family: 'Barlow', sans-serif;
@@ -81,12 +101,10 @@
       letter-spacing: 0.1em;
       text-transform: uppercase;
       cursor: pointer;
-      transition: background 0.2s;
+      transition: background 0.2s, opacity 0.2s;
     }
-    .btn-login:hover { background: #c02020; }
-
-    /* ── Tentatives ── */
-    .btn-login:disabled { background: #555; cursor: not-allowed; }
+    .btn-login:hover:not(:disabled) { background: #c02020; }
+    .btn-login:disabled { opacity: 0.5; cursor: not-allowed; }
 
     /* ── Dashboard ── */
     #dashboard { display: none; padding: calc(64px + 3rem) 2rem 3rem; max-width: 900px; margin: 0 auto; }
@@ -159,9 +177,7 @@
       font-family: 'Share Tech Mono', monospace;
       font-size: 0.9rem;
     }
-    thead tr {
-      border-bottom: 2px solid #e63030;
-    }
+    thead tr { border-bottom: 2px solid #e63030; }
     thead th {
       font-family: 'Barlow Condensed', sans-serif;
       font-size: 0.8rem;
@@ -176,29 +192,31 @@
       transition: background 0.15s;
     }
     tbody tr:hover { background: #141414; }
-    tbody td {
-      padding: 0.7rem 0.8rem;
-      color: #ccc;
-    }
+    tbody td { padding: 0.7rem 0.8rem; color: #ccc; }
     tbody td:last-child { color: #e63030; font-weight: 700; }
 
     /* ── Bar chart ── */
-    .bar-wrap {
-      display: flex; align-items: center; gap: 0.8rem;
-    }
-    .bar-bg {
-      flex: 1; height: 6px; background: #1e1e1e; border-radius: 3px; overflow: hidden;
-    }
-    .bar-fill {
-      height: 100%; background: #e63030; border-radius: 3px;
-      transition: width 0.6s ease;
-    }
+    .bar-wrap { display: flex; align-items: center; gap: 0.8rem; }
+    .bar-bg { flex: 1; height: 6px; background: #1e1e1e; border-radius: 3px; overflow: hidden; }
+    .bar-fill { height: 100%; background: #e63030; border-radius: 3px; transition: width 0.6s ease; }
 
-    /* ── Loading ── */
+    /* ── Loading / spinner ── */
     .loading-text {
       font-family: 'Share Tech Mono', monospace;
       color: #444; font-size: 0.9rem; text-align: center; padding: 2rem;
     }
+    .btn-login.loading::after {
+      content: '';
+      display: inline-block;
+      width: 12px; height: 12px;
+      border: 2px solid #fff;
+      border-top-color: transparent;
+      border-radius: 50%;
+      animation: spin 0.6s linear infinite;
+      margin-left: 0.6rem;
+      vertical-align: middle;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
   </style>
 </head>
 <body>
@@ -207,15 +225,23 @@
 <!-- ── Login ── -->
 <div id="login-overlay">
   <div class="login-box">
-    <h2>Pyro<em>Track</em> <br>Admin</h2>
+    <h2>Pyro<em>Track</em><br>Admin</h2>
+
     <div class="login-field">
       <label>Utilisateur</label>
       <input type="text" id="input-user" autocomplete="username" placeholder="Utilisateur" />
     </div>
+
     <div class="login-field">
       <label>Mot de passe</label>
       <input type="password" id="input-pass" autocomplete="current-password" placeholder="••••••••••••" />
     </div>
+
+    <label class="login-remember">
+      <input type="checkbox" id="input-remember" />
+      <span>Se souvenir de moi (30 jours)</span>
+    </label>
+
     <p class="login-error" id="login-error"></p>
     <button class="btn-login" id="btn-login">Connexion</button>
   </div>
@@ -248,114 +274,114 @@
     <p class="loading-text">Chargement des données...</p>
   </div>
 </div>
-  <div id="footer-placeholder"></div>
+
+<div id="footer-placeholder"></div>
 <script src="../js/i18n.js"></script>
 <script src="../js/components.js"></script>
 <script>
-  /* ── Hashes SHA-256 (ne pas modifier) ── */
-  const USER_HASH = 'd44e1785d8ef83f2d215d50b6e20f94a7d092ddaa6789c7a4731c8d3b6a9b8dc';
-  const PASS_HASH = 'ed42de115f834a4157c18fe9bdaa73a617a16c4d75ed5fc73e671b8bcfae0706';
+  /* ─── Config ──────────────────────────────────────────────────────────────── */
+  const API_BASE   = 'https://licence-pyrotrack-gen.onrender.com';
+  const TOKEN_KEY  = 'adm_token';   // clé localStorage
 
-  const MAX_ATTEMPTS = 5;
-  const LOCKOUT_MS  = 5 * 60 * 1000; // 5 minutes
-
-  /* ── Utilitaire SHA-256 ── */
-  async function sha256(str) {
-    const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
-    return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
-  }
-
-  /* ── Anti-brute-force (sessionStorage) ── */
-  function getAttempts() { return parseInt(sessionStorage.getItem('adm_att') || '0'); }
-  function getLockout()  { return parseInt(sessionStorage.getItem('adm_lock') || '0'); }
-  function bumpAttempts() {
-    const n = getAttempts() + 1;
-    sessionStorage.setItem('adm_att', n);
-    if (n >= MAX_ATTEMPTS) sessionStorage.setItem('adm_lock', Date.now() + LOCKOUT_MS);
-    return n;
-  }
-  function resetAttempts() {
-    sessionStorage.removeItem('adm_att');
-    sessionStorage.removeItem('adm_lock');
-  }
-
-  /* ── Session ── */
-  const SESSION_KEY = 'adm_ok';
-  function isLoggedIn() { return sessionStorage.getItem(SESSION_KEY) === '1'; }
-
-  /* ── Login ── */
+  /* ─── Éléments DOM ───────────────────────────────────────────────────────── */
   const overlay   = document.getElementById('login-overlay');
   const dashboard = document.getElementById('dashboard');
   const errorEl   = document.getElementById('login-error');
   const btnLogin  = document.getElementById('btn-login');
 
-  async function tryLogin() {
-    // Vérif lockout
-    const lockUntil = getLockout();
-    if (lockUntil && Date.now() < lockUntil) {
-      const remaining = Math.ceil((lockUntil - Date.now()) / 1000);
-      errorEl.textContent = `Trop de tentatives. Réessayez dans ${remaining}s.`;
-      btnLogin.disabled = true;
-      return;
-    }
-
-    const user = document.getElementById('input-user').value.trim();
-    const pass = document.getElementById('input-pass').value;
-
-    const [uHash, pHash] = await Promise.all([sha256(user), sha256(pass)]);
-
-    if (uHash === USER_HASH && pHash === PASS_HASH) {
-      resetAttempts();
-      sessionStorage.setItem(SESSION_KEY, '1');
-      overlay.style.display = 'none';
-      dashboard.style.display = 'block';
-      loadStats();
-    } else {
-      const attempts = bumpAttempts();
-      const left = MAX_ATTEMPTS - attempts;
-      errorEl.textContent = left > 0
-        ? `Identifiants incorrects. ${left} tentative${left > 1 ? 's' : ''} restante${left > 1 ? 's' : ''}.`
-        : `Compte verrouillé 5 minutes.`;
-      btnLogin.disabled = attempts >= MAX_ATTEMPTS;
-    }
+  /* ─── Token helpers ──────────────────────────────────────────────────────── */
+  function saveToken(token) {
+    localStorage.setItem(TOKEN_KEY, token);
+  }
+  function getToken() {
+    return localStorage.getItem(TOKEN_KEY);
+  }
+  function clearToken() {
+    localStorage.removeItem(TOKEN_KEY);
   }
 
-  btnLogin.addEventListener('click', tryLogin);
-  document.addEventListener('keydown', e => { if (e.key === 'Enter') tryLogin(); });
-
-  document.getElementById('btn-logout').addEventListener('click', () => {
-    sessionStorage.removeItem(SESSION_KEY);
-    location.reload();
-  });
-
-  /* ── Vérif session au chargement ── */
-  if (isLoggedIn()) {
-    overlay.style.display = 'none';
+  /* ─── Affichage dashboard ────────────────────────────────────────────────── */
+  function showDashboard() {
+    overlay.style.display  = 'none';
     dashboard.style.display = 'block';
     loadStats();
   }
 
-  // Re-activer le bouton si lockout expiré
-  const lockUntil = getLockout();
-  if (lockUntil && Date.now() < lockUntil) {
-    btnLogin.disabled = true;
-    const interval = setInterval(() => {
-      if (Date.now() >= getLockout()) {
-        btnLogin.disabled = false;
-        errorEl.textContent = '';
-        resetAttempts();
-        clearInterval(interval);
+  /* ─── Vérification du token au chargement ───────────────────────────────── */
+  async function checkExistingSession() {
+    const token = getToken();
+    if (!token) return;
+
+    try {
+      const res = await fetch(`${API_BASE}/admin/verify`, {
+        headers: { 'Authorization': `Bearer ${token}` }
+      });
+      if (res.ok) {
+        showDashboard();
       } else {
-        const remaining = Math.ceil((getLockout() - Date.now()) / 1000);
-        errorEl.textContent = `Trop de tentatives. Réessayez dans ${remaining}s.`;
+        clearToken(); // Token expiré ou invalide
       }
-    }, 1000);
+    } catch {
+      // Serveur injoignable — on reste sur le login
+    }
   }
 
-  /* ── Chargement des stats ── */
-  async function loadStats() {
+  /* ─── Login ──────────────────────────────────────────────────────────────── */
+  async function tryLogin() {
+    const username = document.getElementById('input-user').value.trim();
+    const password = document.getElementById('input-pass').value;
+    const remember = document.getElementById('input-remember').checked;
+
+    if (!username || !password) {
+      errorEl.textContent = 'Veuillez remplir tous les champs.';
+      return;
+    }
+
+    // UI loading
+    btnLogin.disabled = true;
+    btnLogin.classList.add('loading');
+    btnLogin.textContent = 'Connexion';
+    errorEl.textContent = '';
+
     try {
-      const res  = await fetch('https://licence-pyrotrack-gen.onrender.com/download-stats');
+      const res = await fetch(`${API_BASE}/admin/login`, {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify({ username, password, remember }),
+      });
+
+      const data = await res.json();
+
+      if (res.ok && data.ok && data.token) {
+        saveToken(data.token);
+        showDashboard();
+      } else {
+        errorEl.textContent = data.error ?? 'Identifiants incorrects.';
+      }
+    } catch {
+      errorEl.textContent = 'Impossible de joindre le serveur.';
+    } finally {
+      btnLogin.disabled = false;
+      btnLogin.classList.remove('loading');
+    }
+  }
+
+  /* ─── Events ─────────────────────────────────────────────────────────────── */
+  btnLogin.addEventListener('click', tryLogin);
+  document.addEventListener('keydown', e => { if (e.key === 'Enter') tryLogin(); });
+
+  document.getElementById('btn-logout').addEventListener('click', () => {
+    clearToken();
+    location.reload();
+  });
+
+  /* ─── Chargement stats ───────────────────────────────────────────────────── */
+  async function loadStats() {
+    const token = getToken();
+    try {
+      const res  = await fetch(`${API_BASE}/download-stats`, {
+        headers: token ? { 'Authorization': `Bearer ${token}` } : {}
+      });
       const data = await res.json();
       const stats = data.stats;
 
@@ -404,7 +430,9 @@
       console.error(err);
     }
   }
-</script>
 
+  /* ─── Init ───────────────────────────────────────────────────────────────── */
+  checkExistingSession();
+</script>
 </body>
 </html>
