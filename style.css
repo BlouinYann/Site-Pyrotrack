@@ -771,6 +771,11 @@ main {
     .feature-tag.tag-dmx { border-color: rgba(var(--cyan-rgb), 0.3); color: var(--cyan); }
     .feature-tag.tag-live { border-color: rgba(255,102,0,0.3); color: var(--ember); }
     .feature-tag.tag-report { border-color: rgba(57,255,106,0.3); color: var(--green); }
+    .feature-tag.tag-project { border-color: rgba(var(--text)); color: var(--text); }
+    .feature-tag.tag-group { border-color: rgba(var(--accent)); color: var(--accent); }
+    .feature-tag.tag-config { border-color: rgba(218, 198, 25, 0.582); color: rgba(218, 198, 25, 0.582); }
+    .feature-tag.tag-library { border-color: rgba(235, 84, 210, 0.658); color: rgba(235, 84, 210, 0.658); }
+    .feature-tag.tag-phone { border-color: rgba(84, 132, 235, 0.658); color: rgba(84, 132, 235, 0.658); }
 
     /* ═══════════════════════════════════════════════
        STACK TECHNIQUE
@@ -1811,11 +1816,12 @@ body.legal-page .nav-logo span { color: var(--red); }
   white-space: nowrap;
 }
 
-.cat-tag--type {
-  background: rgba(204,17,17,0.12);
-  color: #c86060;
-  border: 1px solid rgba(204,17,17,0.25);
-}
+.cat-tag--flame    { background: rgba(220, 80,  20, 0.18); color: #e85d20; border-color: rgba(220, 80,  20, 0.35); }
+.cat-tag--spark    { background: rgba(230, 180,  0, 0.18); color: #e6b800; border-color: rgba(230, 180,  0, 0.35); }
+.cat-tag--co2      { background: rgba( 80, 160, 220, 0.18); color: #4fa8e0; border-color: rgba( 80, 160, 220, 0.35); }
+.cat-tag--smoke    { background: rgba(160, 160, 160, 0.18); color: #aaaaaa; border-color: rgba(160, 160, 160, 0.35); }
+.cat-tag--bubble   { background: rgba( 80, 200, 180, 0.18); color: #3ec9b0; border-color: rgba( 80, 200, 180, 0.35); }
+.cat-tag--confetti { background: rgba(180,  80, 220, 0.18); color: #c060e0; border-color: rgba(180,  80, 220, 0.35); }
 
 .cat-tag--variant {
   background: transparent;

@@ -35,7 +35,7 @@ const I18N = {
     mockup_progress: 'Consumption progress',
 
     features_eyebrow:    '02 — Features',
-    features_title_html: 'Everything you need,<br><em>nothing more.</em>',
+    features_title_html: 'Everything <em>you need.</em>',
 
     feat1_name: 'Project management',
     feat1_desc: 'Import, save and load your projects in <code>.pts</code> format. Instantly resume your last session.',
@@ -65,11 +65,14 @@ const I18N = {
     feat7_tag:  'Library',
     feat7_desc: 'Browse all compatible effects and DMX profiles. <a href="/catalogue/" class="feat-link">Explore the catalogue →</a>',
 
+    feat8_name: 'Follow on Phone',
+    feat8_desc: 'Set up a web server and follow consumption from multiple devices in real time.',
+    feat8_tag:  'Phone',
+    
     download_eyebrow:    '03 — Download',
-    download_title_html: 'Beta<br><span class="accent">available.</span>',
+    download_title_html: 'Download<br><span class="accent">available.</span>',
     download_sub_html:   'The software is currently available as a free version only.<br>Limited to 10 fixtures, 20 minutes of consumption tracking and PDF exports disabled.',
     download_btn:        '⬇ Download for Windows',
-    download_soon:       'Final version in development',
 
     contact_eyebrow:    '04 — Contact',
     contact_title_html: 'Get in<br><span class="accent">touch.</span>',
@@ -81,7 +84,6 @@ const I18N = {
 
     /* Download page */
     dl_title:     'Download Pyro<em>Track</em>System<br>for Windows.',
-    dl_intro:     'The software is currently in beta and is available for Windows users.',
     dl_btn_loading: 'Loading...',
     dl_platform:  'Available for Windows (x64)',
     dl_changelog: 'See what\'s new',

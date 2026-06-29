@@ -52,18 +52,9 @@
         <div>
           <p class="section-desc reveal reveal-delay-2" data-i18n="about_p1">
             PyroTrack System est un logiciel desktop dédié aux artificiers et techniciens du spectacle.
-            Il permet de suivre en temps réel la consommation des produits pyrotechniques, de gérer les groupes de tir,
+            Il permet de suivre en temps réel la consommation des produits sfx, de gérer les groupes de tir,
             et de générer des rapports détaillés pour chaque session.
           </p>
-          <p class="section-desc reveal reveal-delay-3" style="margin-top: 1rem;" data-i18n="about_p2">
-            Conçu avec une interface sombre et précise, il s'intègre directement à votre setup DMX
-            et offre une vue live sur l'état de chaque poste de tir.
-          </p>
-          <div style="margin-top: 2rem; display: flex; gap: 0.75rem; flex-wrap: wrap;" class="reveal reveal-delay-4">
-            <span class="btn-soon" data-i18n="about_badge1">🎯 Gestion de projets</span>
-            <span class="btn-soon" data-i18n="about_badge2">📡 Interface DMX</span>
-            <span class="btn-soon" data-i18n="about_badge3">📊 Rapports PDF</span>
-          </div>
         </div>
 
         <div class="about-visual reveal reveal-delay-3">
@@ -74,7 +65,7 @@
             <div class="mockup-body">
               <div class="mockup-card">
                 <div class="mockup-card-label" data-i18n="mockup_active">Produits actifs</div>
-                <div class="mockup-card-val">142</div>
+                <div class="mockup-card-val">24</div>
               </div>
               <div class="mockup-card">
                 <div class="mockup-card-label" data-i18n="mockup_consumed">Consommés</div>
@@ -103,7 +94,7 @@
   <section id="features">
     <div class="section-inner">
       <p class="section-eyebrow reveal" data-i18n="features_eyebrow">02 — Fonctionnalités</p>
-      <h2 class="section-title reveal reveal-delay-1" data-i18n-html="features_title_html">Tout ce qu'il faut,<br><em>rien de superflu.</em></h2>
+      <h2 class="section-title reveal reveal-delay-1" data-i18n-html="features_title_html">Tout ce qu'il <em>vous faut!</em></h2>
 
       <div class="features-grid">
 
@@ -111,7 +102,7 @@
           <div class="feature-icon">📁</div>
           <div class="feature-name" data-i18n="feat1_name">Gestion de projets</div>
           <p class="feature-desc" data-i18n-html="feat1_desc">Importez, sauvegardez et chargez vos projets au format <code>.pts</code>. Retrouvez instantanément votre dernière session.</p>
-          <span class="feature-tag" data-i18n="feat1_tag">Projets</span>
+          <span class="feature-tag tag-project" data-i18n="feat1_tag">Projets</span>
         </div>
 
         <div class="feature-card reveal reveal-delay-2">
@@ -132,7 +123,7 @@
           <div class="feature-icon">🗂️</div>
           <div class="feature-name" data-i18n="feat4_name">Groupes de tir</div>
           <p class="feature-desc" data-i18n-html="feat4_desc">Créez et gérez vos groupes pyrotechniques avec assignation de couleur, produits associés et compteurs de consommation.</p>
-          <span class="feature-tag" data-i18n="feat4_tag">Groupes</span>
+          <span class="feature-tag tag-group" data-i18n="feat4_tag">Groupes</span>
         </div>
 
         <div class="feature-card reveal reveal-delay-3">
@@ -145,8 +136,8 @@
         <div class="feature-card reveal reveal-delay-4">
           <div class="feature-icon">⚙️</div>
           <div class="feature-name" data-i18n="feat6_name">Configuration avancée</div>
-          <p class="feature-desc" data-i18n-html="feat6_desc">Paramétrez votre port COM, vos préférences d'affichage et les comportements d'armement selon votre matériel.</p>
-          <span class="feature-tag" data-i18n="feat6_tag">Config</span>
+          <p class="feature-desc" data-i18n-html="feat6_desc">Paramétrez vos exports pdf, vos préférences d'affichage et les comportements d'armement selon votre matériel.</p>
+          <span class="feature-tag tag-config" data-i18n="feat6_tag">Config</span>
         </div>
         <div class="feature-card reveal reveal-delay-4">
   <div class="feature-icon">🎨</div>
@@ -155,8 +146,14 @@
     Parcourez tous les effets compatibles et leurs profils DMX.
     <a href="/catalogue/" class="feat-link">Découvrir le catalogue →</a>
   </p>
-  <span class="feature-tag" data-i18n="feat7_tag">Librairie</span>
+  <span class="feature-tag tag-library" data-i18n="feat7_tag">Librairie</span>
 </div>
+<div class="feature-card reveal reveal-delay-4">
+          <div class="feature-icon">📱</div>
+          <div class="feature-name" data-i18n="feat8_name">Suivez sur Téléphone</div>
+          <p class="feature-desc" data-i18n-html="feat8_desc">Paramétrez un serveur web et suivez la conso depuis plusieurs appareils en direct.</p>
+          <span class="feature-tag tag-phone" data-i18n="feat8_tag">Téléphone</span>
+        </div>
       </div>
     </div>
   </section>
@@ -171,7 +168,7 @@
       <p class="section-eyebrow reveal" style="justify-content: center;" data-i18n="download_eyebrow">03 — Téléchargement</p>
 
       <h2 class="download-heading reveal reveal-delay-1" data-i18n-html="download_title_html">
-        Bêta<br><span class="accent">disponible.</span>
+        Téléchargement<br><span class="accent">disponible.</span>
       </h2>
 
       <p class="download-sub reveal reveal-delay-2" data-i18n-html="download_sub_html">
@@ -184,8 +181,6 @@
           ⬇ Télécharger pour Windows
         </a>
       </div>
-
-      <p class="soon-notice reveal reveal-delay-4" data-i18n="download_soon">Version finale en cours de développement</p>
     </div>
   </section>
 

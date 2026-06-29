@@ -209,7 +209,7 @@
           ${g.cats.length ? `
           <div class="cat-row">
             <span class="cat-row-label">${rowLabels.type}</span>
-            <div class="cat-row-tags">${g.cats.map(c => `<span class="cat-tag cat-tag--type">${esc(catLabel(c))}</span>`).join('')}</div>
+            <div class="cat-row-tags">${g.cats.map(c => `<span class="cat-tag cat-tag--${c.toLowerCase()}">${esc(catLabel(c))}</span>`).join('')}</div>
           </div>` : ''}
           ${g.variants.length ? `
           <div class="cat-row">
