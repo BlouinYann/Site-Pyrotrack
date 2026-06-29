@@ -43,4 +43,10 @@
     <priority>0.8</priority>
   </url>
 
+<url>
+    <loc>https://pyrotracksystem.com/catalogue/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
 </urlset>
