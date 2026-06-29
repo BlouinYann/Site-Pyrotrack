@@ -73,3 +73,4 @@
     <product id="flameblazer_l" name="Flameblazer L" variantGroup="Flameblazer" variantLabel="L" category="Flame" manufacturer="Magic FX" unit="l" rate="3" per="min" mode="continuous" defaultQty="5" channelCount="1" fireChannel="1" />
   </products>
 </catalogue>
+ 
