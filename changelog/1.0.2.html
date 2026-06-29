@@ -93,7 +93,7 @@ if (match) {
   </script>
   <script>
   const patchNotes = [
-    { tag: 'SECTION', text: 'Protocoles DMX' },
+  { tag: 'SECTION', text: 'Protocoles DMX' },
   { tag: 'NEW', tagClass: 'pn-tag--new', text: 'Réception Art-Net en temps réel avec sélection d\'univers multiples.' },
   { tag: 'NEW', tagClass: 'pn-tag--new', text: 'Support du protocole sACN (E1.31).' },
   { tag: 'NEW', tagClass: 'pn-tag--new', text: 'Support USB DMX via port série — détection automatique des ports disponibles.' },
@@ -122,13 +122,22 @@ if (match) {
   { tag: 'NEW', tagClass: 'pn-tag--new', text: 'Sauvegarde locale et export au format .pts (PyroTrack Show).' },
   { tag: 'NEW', tagClass: 'pn-tag--new', text: 'Ouverture d\'un fichier .pts par double-clic depuis l\'explorateur.' },
 
-  { tag: 'SECTION', text: 'Export & licence' },
+  { tag: 'SECTION', text: 'Export PDF et licences' },
+  { tag: 'NEW', tagClass: 'pn-tag--new', text: 'Customisation des exports pdf pour coller à votre style (licence Pro requise).' },
   { tag: 'NEW', tagClass: 'pn-tag--new', text: 'Export et ouverture PDF des rapports (licence Pro requise).' },
   { tag: 'NEW', tagClass: 'pn-tag--new', text: 'Licence en ligne avec mode offline automatique — adapté aux régies sans réseau.' },
+
+  { tag: 'SECTION', text: 'Configuration' },
+  { tag: 'CHG', tagClass: 'pn-tag--chg', text: 'Refonte complète de la page et unification des onglets.' },
+  { tag: 'NEW', tagClass: 'pn-tag--new', text: 'Ajout du numéro de version visible en bas de page.' },
 
   { tag: 'SECTION', text: 'Interface' },
   { tag: 'NEW', tagClass: 'pn-tag--new', text: 'Raccourcis clavier globaux configurables.' },
   { tag: 'CHG', tagClass: 'pn-tag--chg', text: 'Refonte complète de la feuille de styles (variables unifiées).' },
+
+  { tag: 'SECTION', text: 'Divers' },
+  { tag: 'NEW', tagClass: 'pn-tag--new', text: 'Message pop-up si le logiciel a une mise à jour' },
+  { tag: 'NEW', tagClass: 'pn-tag--new', text: 'Message pop-up si le catalogue a été mis à jour' },
   ];
 
   const container = document.getElementById('patchnote-container');
