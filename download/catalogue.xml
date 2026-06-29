@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <catalogue version="1.0">
   <products>
-    <product id="flameblazer_5way_s" name="Flameblazer 5 Way S" variantGroup="Flameblazer 5 Way" variantLabel="S" category="Flame" manufacturer="Magic FX" unit="l" rate="1.4" per="min" mode="continuous" defaultQty="5" channelCount="5" fireChannel="1,2,3,4,5" firingCumulable="false" />
-    <product id="flameblazer_5way_m" name="Flameblazer 5 Way M" variantGroup="Flameblazer 5 Way" variantLabel="M" category="Flame" manufacturer="Magic FX" unit="l" rate="1.6" per="min" mode="continuous" defaultQty="5" channelCount="5" fireChannel="1,2,3,4,5" firingCumulable="false" />
-    <product id="flameblazer_5way_l" name="Flameblazer 5 Way L" variantGroup="Flameblazer 5 Way" variantLabel="L" category="Flame" manufacturer="Magic FX" unit="l" rate="3.5" per="min" mode="continuous" defaultQty="5" channelCount="5" fireChannel="1,2,3,4,5" firingCumulable="false" />
+    <product id="flameblazer_s" name="Flameblazer S" variantGroup="Flameblazer" variantLabel="S" category="Flame" manufacturer="Magic FX" unit="l" rate="0.7" per="min" mode="continuous" defaultQty="5" channelCount="1" fireChannel="1" />
+    <product id="flameblazer_m" name="Flameblazer M" variantGroup="Flameblazer" variantLabel="M" category="Flame" manufacturer="Magic FX" unit="l" rate="1.8" per="min" mode="continuous" defaultQty="5" channelCount="1" fireChannel="1" />
+    <product id="flameblazer_l" name="Flameblazer L" variantGroup="Flameblazer" variantLabel="L" category="Flame" manufacturer="Magic FX" unit="l" rate="3" per="min" mode="continuous" defaultQty="5" channelCount="1" fireChannel="1" />
     <product id="sparxtar" name="Sparxtar" category="Spark" manufacturer="Magic FX" unit="g" rate="20" per="min" mode="variable" defaultQty="100" channelCount="2" fireChannel="1" />
     <product id="sparkular_wheel" name="Sparkular Wheel" category="Spark" manufacturer="Showven" unit="g" rate="50" per="min" mode="variable" defaultQty="550" channelCount="6" fireChannel="3" />
     <product id="sparkular_spin" name="Sparkular Spin" category="Spark" manufacturer="Showven" unit="g" rate="40" per="min" mode="variable" defaultQty="400" channelCount="4" fireChannel="1,3" />
@@ -68,8 +68,12 @@
     <product id="sparkular_mobile" name="Sparkular Mobile" variantGroup="Sparkular" variantLabel="Mobile" category="Spark" manufacturer="Showven" unit="g" rate="15" per="min" mode="variable" defaultQty="100" channelCount="2" fireChannel="1" />
     <product id="cyclone_basic" name="Cyclone Basic" variantGroup="Cyclone" variantLabel="Basic" category="Spark" manufacturer="Showven" unit="g" rate="75" per="min" mode="variable" defaultQty="500" channelCount="2" fireChannel="1" />
     <product id="cyclone_ii" name="Cyclone II" variantGroup="Cyclone" variantLabel="II" category="Spark" manufacturer="Showven" unit="g" rate="50" per="min" mode="variable" defaultQty="450" channelCount="2" fireChannel="1" />
-    <product id="flameblazer_s" name="Flameblazer S" variantGroup="Flameblazer" variantLabel="S" category="Flame" manufacturer="Magic FX" unit="l" rate="0.7" per="min" mode="continuous" defaultQty="5" channelCount="1" fireChannel="1" />
-    <product id="flameblazer_m" name="Flameblazer M" variantGroup="Flameblazer" variantLabel="M" category="Flame" manufacturer="Magic FX" unit="l" rate="1.8" per="min" mode="continuous" defaultQty="5" channelCount="1" fireChannel="1" />
-    <product id="flameblazer_l" name="Flameblazer L" variantGroup="Flameblazer" variantLabel="L" category="Flame" manufacturer="Magic FX" unit="l" rate="3" per="min" mode="continuous" defaultQty="5" channelCount="1" fireChannel="1" />
+    <product id="flameblazer_5_way_s" name="Flameblazer 5 Way S" variantGroup="Flameblazer 5 Way" variantLabel="S" category="Flame" manufacturer="Magic FX" unit="l" rate="0.7" per="min" mode="continuous" defaultQty="5" channelCount="5" fireChannel="1,2,3,4,5" />
+    <product id="flameblazer_5_way_m" name="Flameblazer 5 Way M" variantGroup="Flameblazer 5 Way" variantLabel="M" category="Flame" manufacturer="Magic FX" unit="l" rate="1.8" per="min" mode="continuous" defaultQty="5" channelCount="5" fireChannel="1,2,3,4,5" />
+    <product id="flameblazer_5_way_l" name="Flameblazer 5 Way L" variantGroup="Flameblazer 5 Way" variantLabel="L" category="Flame" manufacturer="Magic FX" unit="l" rate="3" per="min" mode="continuous" defaultQty="5" channelCount="5" fireChannel="1,2,3,4,5" />
+    <product id="firestorm_s" name="Firestorm S" variantGroup="Firestorm" variantLabel="S" category="Flame" manufacturer="Magic FX" unit="l" rate="0.7" per="min" mode="continuous" defaultQty="5" channelCount="5" fireChannel="1,2,3,4,5" firingCumulable="true" />
+    <product id="firestorm_m" name="Firestorm M" variantGroup="Firestorm" variantLabel="M" category="Flame" manufacturer="Magic FX" unit="l" rate="1.8" per="min" mode="continuous" defaultQty="5" channelCount="5" fireChannel="1,2,3,4,5" firingCumulable="true" />
+    <product id="firestorm_l" name="Firestorm L" variantGroup="Firestorm" variantLabel="L" category="Flame" manufacturer="Magic FX" unit="l" rate="3" per="min" mode="continuous" defaultQty="5" channelCount="5" fireChannel="1,2,3,4,5" firingCumulable="true" />
+    <product id="hellfire" name="Hellfire" manufacturer="Magic FX" category="Flame" fireChannel="1" variantGroup="Hellfire" dmxProfileGroup="Hellfire" rate="15" defaultQty="0" channelCount="1" unit="l" per="min" mode="continuous" />
   </products>
 </catalogue>
